@@ -1,0 +1,10 @@
+from reportlab.pdfgen import canvas
+def Titulo(c,tit):
+    c.drawCentredString(300,800,tit)
+def Texto(str1,str2):
+    str1.drawString(100,750,str2)
+def Generar(str1,str2,str3):
+    c = canvas.Canvas(str1 + ".pdf")
+    Titulo(c,str2)
+    Texto(c,str3)
+    c.save()
