@@ -1,10 +1,33 @@
 from reportlab.pdfgen import canvas
+from reportlab.platypus import Paragraph
+from reportlab.lib.styles import getSampleStyleSheet,PropertySet,ParagraphStyle
 def Titulo(c,tit):
-    c.drawCentredString(300,800,tit)
-def Texto(str1,str2):
-    str1.drawString(100,750,str2)
+    styleSheet = getSampleStyleSheet()
+    style = styleSheet['Title']
+    p = Paragraph(tit, style)
+    aw = 550
+    ah = 770
+    w, h = p.wrap(aw, ah)
+    if w <= aw and h <= ah:
+        p.drawOn(c, 0, ah)
+        ah = ah - h
+    else:
+        raise ValueError
+    return ah
+def Texto(str1,str2,ho):
+    styleSheet = getSampleStyleSheet()
+    style = styleSheet['BodyText']
+    p = Paragraph(str2,style)
+    aw = 490
+    ah = ho
+    w, h = p.wrap(aw, ah)
+    if w <= aw and h <= ah:
+        p.drawOn(str1, 50, ah)
+        ah = ah - h
+    else:
+        raise ValueError
 def Generar(str1,str2,str3):
     c = canvas.Canvas(str1 + ".pdf")
-    Titulo(c,str2)
-    Texto(c,str3)
+    ho = Titulo(c,str2)
+    Texto(c,str3,ho)
     c.save()
