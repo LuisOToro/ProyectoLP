@@ -1,0 +1,72 @@
+Created by PLY version 3.10 (http://www.dabeaz.com/ply)
+
+Unused terminals:
+
+    RLLAVE
+    ARTICULO
+
+Grammar
+
+Rule 0     S' -> statement
+Rule 1     statement -> BLOQUE
+Rule 2     statement -> ARROBA ARTICLE
+Rule 3     titulo -> TITLE EQUALS BLOQUE
+Rule 4     autor -> AUTOR EQUALS BLOQUE
+Rule 5     ano -> YEAR EQUALS NUMBER
+Rule 6     pagina -> PAGE EQUALS NUMBER
+Rule 7     nota -> NOTE EQUALS BLOQUE
+Rule 8     volumen -> VOLUMEN EQUALS NUMBER
+Rule 9     journal -> JOURNAL EQUALS BLOQUE
+Rule 10    numero -> NUMERO EQUAL NUMBER
+Rule 11    mes -> MONTH EQUALS NUMBER
+Rule 12    expression -> ARROBA ARTICLE LLLAVE NAME COMMA
+Rule 13    expression -> NUMBER
+Rule 14    articulo -> ARROBA ARTICLE LLLAVE NAME COMMA autor COMMA titulo COMMA journal COMMA ano COMMA numero COMMA pagina COMMA mes COMMA nota COMMA volumen COMMA
+Rule 15    expression -> expression PLUS expression
+Rule 16    expression -> expression MINUS expression
+Rule 17    expression -> expression TIMES expression
+Rule 18    expression -> expression DIVIDE expression
+
+Terminals, with rules where they appear
+
+ARROBA               : 2 12 14
+ARTICULO             : 
+AUTOR                : 4
+BLOQUE               : 1 3 4 7 9
+COMMA                : 12 14 14 14 14 14 14 14 14 14 14
+DIVIDE               : 18
+EQUALS               : 3 4 5 6 7 8 9 11
+JOURNAL              : 9
+LLLAVE               : 12 14
+MINUS                : 16
+MONTH                : 11
+NAME                 : 12 14
+NOTE                 : 7
+NUMBER               : 5 6 8 10 11 13
+NUMERO               : 10
+PAGE                 : 6
+PLUS                 : 15
+RLLAVE               : 
+TIMES                : 17
+TITLE                : 3
+VOLUMEN              : 8
+YEAR                 : 5
+error                : 
+
+Nonterminals, with rules where they appear
+
+ARTICLE              : 2 12 14
+EQUAL                : 10
+ano                  : 14
+articulo             : 
+autor                : 14
+expression           : 15 15 16 16 17 17 18 18
+journal              : 14
+mes                  : 14
+nota                 : 14
+numero               : 14
+pagina               : 14
+statement            : 0
+titulo               : 14
+volumen              : 14
+

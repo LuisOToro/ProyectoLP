@@ -1,3 +1,5 @@
 .idea/*
 *.pdf
 test.py
+*.png
+*.jpg
