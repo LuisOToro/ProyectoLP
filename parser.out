@@ -2,26 +2,32 @@ Created by PLY version 3.10 (http://www.dabeaz.com/ply)
 
 Unused terminals:
 
-    RLLAVE
-    ARTICULO
+    PUBLISHER
+    SERIES
+    ADDRESS
+    EDITION
+    ISBN
+    BOOKTITLE
+    EDITOR
+    ONGANIZATION
 
 Grammar
 
 Rule 0     S' -> statement
 Rule 1     statement -> BLOQUE
-Rule 2     statement -> ARROBA ARTICLE
-Rule 3     titulo -> TITLE EQUALS BLOQUE
-Rule 4     autor -> AUTOR EQUALS BLOQUE
+Rule 2     statement -> ARROBA ARTICULO
+Rule 3     titulo -> TITLE EQUALS LLLAVE BLOQUE RLLAVE
+Rule 4     autor -> AUTOR EQUALS LLLAVE BLOQUE RLLAVE
 Rule 5     ano -> YEAR EQUALS NUMBER
-Rule 6     pagina -> PAGE EQUALS NUMBER
-Rule 7     nota -> NOTE EQUALS BLOQUE
+Rule 6     pagina -> PAGE EQUALS LLLAVE BLOQUE RLLAVE
+Rule 7     nota -> NOTE EQUALS LLLAVE BLOQUE RLLAVE
 Rule 8     volumen -> VOLUMEN EQUALS NUMBER
-Rule 9     journal -> JOURNAL EQUALS BLOQUE
-Rule 10    numero -> NUMERO EQUAL NUMBER
+Rule 9     journal -> JOURNAL EQUALS LLLAVE BLOQUE RLLAVE
+Rule 10    numero -> NUMERO EQUALS NUMBER
 Rule 11    mes -> MONTH EQUALS NUMBER
-Rule 12    expression -> ARROBA ARTICLE LLLAVE NAME COMMA
+Rule 12    expression -> ARROBA ARTICULO LLLAVE NAME COMMA
 Rule 13    expression -> NUMBER
-Rule 14    articulo -> ARROBA ARTICLE LLLAVE NAME COMMA autor COMMA titulo COMMA journal COMMA ano COMMA numero COMMA pagina COMMA mes COMMA nota COMMA volumen COMMA
+Rule 14    articulo -> ARROBA ARTICULO LLLAVE NAME COMMA autor COMMA titulo COMMA journal COMMA ano COMMA numero COMMA pagina COMMA mes COMMA nota COMMA volumen COMMA
 Rule 15    expression -> expression PLUS expression
 Rule 16    expression -> expression MINUS expression
 Rule 17    expression -> expression TIMES expression
@@ -29,24 +35,32 @@ Rule 18    expression -> expression DIVIDE expression
 
 Terminals, with rules where they appear
 
+ADDRESS              : 
 ARROBA               : 2 12 14
-ARTICULO             : 
+ARTICULO             : 2 12 14
 AUTOR                : 4
-BLOQUE               : 1 3 4 7 9
+BLOQUE               : 1 3 4 6 7 9
+BOOKTITLE            : 
 COMMA                : 12 14 14 14 14 14 14 14 14 14 14
 DIVIDE               : 18
-EQUALS               : 3 4 5 6 7 8 9 11
+EDITION              : 
+EDITOR               : 
+EQUALS               : 3 4 5 6 7 8 9 10 11
+ISBN                 : 
 JOURNAL              : 9
-LLLAVE               : 12 14
+LLLAVE               : 3 4 6 7 9 12 14
 MINUS                : 16
 MONTH                : 11
 NAME                 : 12 14
 NOTE                 : 7
-NUMBER               : 5 6 8 10 11 13
+NUMBER               : 5 8 10 11 13
 NUMERO               : 10
+ONGANIZATION         : 
 PAGE                 : 6
 PLUS                 : 15
-RLLAVE               : 
+PUBLISHER            : 
+RLLAVE               : 3 4 6 7 9
+SERIES               : 
 TIMES                : 17
 TITLE                : 3
 VOLUMEN              : 8
@@ -55,8 +69,6 @@ error                :
 
 Nonterminals, with rules where they appear
 
-ARTICLE              : 2 12 14
-EQUAL                : 10
 ano                  : 14
 articulo             : 
 autor                : 14
@@ -69,4 +81,43 @@ pagina               : 14
 statement            : 0
 titulo               : 14
 volumen              : 14
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . statement
+    (1) statement -> . BLOQUE
+    (2) statement -> . ARROBA ARTICULO
+
+    BLOQUE          shift and go to state 2
+    ARROBA          shift and go to state 3
+
+    statement                      shift and go to state 1
+
+state 1
+
+    (0) S' -> statement .
+
+
+
+state 2
+
+    (1) statement -> BLOQUE .
+
+    $end            reduce using rule 1 (statement -> BLOQUE .)
+
+
+state 3
+
+    (2) statement -> ARROBA . ARTICULO
+
+    ARTICULO        shift and go to state 4
+
+
+state 4
+
+    (2) statement -> ARROBA ARTICULO .
+
+    $end            reduce using rule 2 (statement -> ARROBA ARTICULO .)
 

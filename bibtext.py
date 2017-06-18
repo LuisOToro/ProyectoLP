@@ -131,7 +131,7 @@ def p_statement_journal_assign(p):
     names[p[1]] = p[3]
 
 def p_statement_number_assign(p):
-    'numero : NUMERO EQUAL NUMBER'
+    'numero : NUMERO EQUALS NUMBER'
     names[p[1]] = p[3]
 
 def p_statement_mes_assign(p):
