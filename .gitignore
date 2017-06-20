@@ -4,3 +4,6 @@ __pycache__/*
 test.py
 *.png
 *.jpg
+bibtext.py
+bibtext-ayudante.py
+test.py

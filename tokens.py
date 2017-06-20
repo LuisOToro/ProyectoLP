@@ -4,7 +4,8 @@ import ply.lex as lex
 reservadas = {"articulo": "ARTICULO","autor": "AUTOR","titulo" : "TITLE", "anio": "YEAR", "paginas": "PAGE",
               "notas" : "NOTE", "volumen" : "VOLUMEN", "journal": "JOURNAL", "name" : "NAME", "numero" : "NUMERO",
               "mes" : "MONTH", "publicado" : "PUBLISHER", "series" : "SERIES","direccion" : "ADDRESS", "edicion" : "EDITION",
-              "isbn" : "ISBN", "bookTitle" : "BOOKTITLE", "editor" : "EDITOR", "organization":"ONGANIZATION"}
+              "isbn" : "ISBN", "bookTitle" : "BOOKTITLE", "editor" : "EDITOR", "organization":"ONGANIZATION", "book":"BOOK",
+              "edition":"EDITION", "conference":"CONFERENCE","manual":"MANUAL","unpublisher":"UNPUBLISHED"}
 
 tokens = ['LLLAVE','RLLAVE','EQUALS','COMMA','NUMBER','ARROBA','BLOQUE','PLUS','MINUS','TIMES','DIVIDE'] +  list(reservadas.values())
 
@@ -18,13 +19,6 @@ t_PLUS = r'\+'
 t_MINUS = r'\-'
 t_TIMES = r'\*'
 t_DIVIDE = r'/'
-
-
-def t_NAME(t):
-    r'[a-zA-Z_][a-zA-Z0-9_]*'
-    t.type = reservadas.get(t.value, "name")
-    return t
-
 
 
 def t_NUMBER(t):

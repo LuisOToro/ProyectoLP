@@ -16,54 +16,54 @@ def p_statement_bloque(p):
     print("exito")
 
 def p_statement_arroba_assign(p):
-    'statement : ARROBA ARTICULO'
+    'statement : ARROBA MANUAL'
     names[p[0]] = p[2]
 
 def p_statement_title_assign(p):
     'titulo : TITLE EQUALS LLLAVE BLOQUE RLLAVE'
-    names[p[1]] = p[3]
+    names[p[1]] = p[4]
 
 def p_statement_autor_assign(p):
-    'autor : AUTOR EQUALS LLAVE BLOQUE RLLAVE'
+    'autor : AUTOR EQUALS LLLAVE BLOQUE RLLAVE'
+    names[p[1]] = p[4]
+
+def p_statement_organization_assign(p):
+    'organization : ONGANIZATION EQUALS LLLAVE BLOQUE RLLAVE'
+    names[p[1]] = p[4]
+
+def p_statement_address_assing(p):
+    'address : ADDRESS EQUALS LLLAVE BLOQUE RLLAVE'
+    names[p[1]] = p[4]
+
+def p_statement_edition_assign(p):
+    'edition : EDITION EQUALS NUMBER'
     names[p[1]] = p[3]
+
 
 def p_statement_year_assing(p):
     'ano : YEAR EQUALS NUMBER'
-    names[p[1]] = p[3]
-
-def p_statement_paginas_assign(p):
-    'pagina : PAGE EQUALS LLAVE BLOQUE RLLAVE'
-    names[p[1]] = p[3]
-
-def p_statement_note_assign(p):
-    'nota : NOTE EQUALS LLAVE BLOQUE RLLAVE'
-    names[p[1]] = p[3]
-
-def p_statement_volumen_assign(p):
-    'volumen : VOLUMEN EQUALS NUMBER'
-    names[p[1]] = p[3]
-
-def p_statement_journal_assign(p):
-    'journal : JOURNAL EQUALS LLAVE BLOQUE RLLAVE'
-    names[p[1]] = p[3]
-
-def p_statement_number_assign(p):
-    'numero : NUMERO EQUALS NUMBER'
     names[p[1]] = p[3]
 
 def p_statement_mes_assign(p):
     'mes : MONTH EQUALS NUMBER'
     names[p[1]] = p[3]
 
+
+def p_statement_note_assign(p):
+    'nota : NOTE EQUALS LLLAVE BLOQUE RLLAVE'
+    names[p[1]] = p[4]
+
+
+
 def p_expression_name(p):
-    'expression : ARROBA ARTICULO LLLAVE NAME COMMA'
+    'expression : ARROBA MANUAL LLLAVE NAME COMMA'
     names[p[0]] = p[4]
 
 def p_expression_number(p):
     'expression : NUMBER'
 
 def p_estructura(p):
-    '''articulo : ARROBA ARTICULO LLLAVE NAME COMMA autor COMMA titulo COMMA journal COMMA ano COMMA numero COMMA pagina COMMA mes COMMA nota COMMA volumen COMMA'''
+    '''manual : ARROBA MANUAL LLLAVE NAME COMMA titulo COMMA autor COMMA organization COMMA address COMMA edition COMMA mes COMMA ano COMMA note COMMA'''
     print("si vale la estructura")
 
 

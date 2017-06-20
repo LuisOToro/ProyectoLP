@@ -21,31 +21,31 @@ def p_statement_arroba_assign(p):
 
 def p_statement_title_assign(p):
     'titulo : TITLE EQUALS LLLAVE BLOQUE RLLAVE'
-    names[p[1]] = p[3]
+    names[p[1]] = p[4]
 
 def p_statement_autor_assign(p):
-    'autor : AUTOR EQUALS LLAVE BLOQUE RLLAVE'
-    names[p[1]] = p[3]
+    'autor : AUTOR EQUALS LLLAVE BLOQUE RLLAVE'
+    names[p[1]] = p[4]
 
 def p_statement_year_assing(p):
     'ano : YEAR EQUALS NUMBER'
-    names[p[1]] = p[3]
+    names[p[1]] = p[4]
 
 def p_statement_paginas_assign(p):
-    'pagina : PAGE EQUALS LLAVE BLOQUE RLLAVE'
-    names[p[1]] = p[3]
+    'pagina : PAGE EQUALS LLLAVE BLOQUE RLLAVE'
+    names[p[1]] = p[4]
 
 def p_statement_note_assign(p):
-    'nota : NOTE EQUALS LLAVE BLOQUE RLLAVE'
-    names[p[1]] = p[3]
+    'nota : NOTE EQUALS LLLAVE BLOQUE RLLAVE'
+    names[p[1]] = p[4]
 
 def p_statement_volumen_assign(p):
     'volumen : VOLUMEN EQUALS NUMBER'
     names[p[1]] = p[3]
 
 def p_statement_journal_assign(p):
-    'journal : JOURNAL EQUALS LLAVE BLOQUE RLLAVE'
-    names[p[1]] = p[3]
+    'journal : JOURNAL EQUALS LLLAVE BLOQUE RLLAVE'
+    names[p[1]] = p[4]
 
 def p_statement_number_assign(p):
     'numero : NUMERO EQUALS NUMBER'
@@ -61,9 +61,10 @@ def p_expression_name(p):
 
 def p_expression_number(p):
     'expression : NUMBER'
+    p[0] = p[1]
 
 def p_estructura(p):
-    '''articulo : ARROBA ARTICULO LLLAVE NAME COMMA autor COMMA titulo COMMA journal COMMA ano COMMA numero COMMA pagina COMMA mes COMMA nota COMMA volumen COMMA'''
+    '''articulo : ARROBA ARTICULO LLLAVE NAME COMMA autor COMMA titulo COMMA journal COMMA ano COMMA numero COMMA pagina COMMA mes COMMA nota COMMA volumen RLLAVE'''
     print("si vale la estructura")
 
 
@@ -89,7 +90,7 @@ yacc.yacc()
 
 while True:
     try:
-        s = input("Ingrese la ruta del archivo: ")
+        s = input("Ingrese la Referencia a Validar: ")
     except EOFError:
         break
     yacc.parse(s)

@@ -16,54 +16,62 @@ def p_statement_bloque(p):
     print("exito")
 
 def p_statement_arroba_assign(p):
-    'statement : ARROBA ARTICULO'
+    'statement : ARROBA BOOK'
     names[p[0]] = p[2]
 
 def p_statement_title_assign(p):
     'titulo : TITLE EQUALS LLLAVE BLOQUE RLLAVE'
-    names[p[1]] = p[3]
+    names[p[1]] = p[4]
 
 def p_statement_autor_assign(p):
-    'autor : AUTOR EQUALS LLAVE BLOQUE RLLAVE'
-    names[p[1]] = p[3]
+    'autor : AUTOR EQUALS LLLAVE BLOQUE RLLAVE'
+    names[p[1]] = p[4]
+
+def p_statement_publisher(p):
+    'publicado : PUBLISHER EQUALS LLAVE BLOQUE RLLAVE'
+    names[p[1]] = p[4]
 
 def p_statement_year_assing(p):
     'ano : YEAR EQUALS NUMBER'
-    names[p[1]] = p[3]
-
-def p_statement_paginas_assign(p):
-    'pagina : PAGE EQUALS LLAVE BLOQUE RLLAVE'
-    names[p[1]] = p[3]
-
-def p_statement_note_assign(p):
-    'nota : NOTE EQUALS LLAVE BLOQUE RLLAVE'
     names[p[1]] = p[3]
 
 def p_statement_volumen_assign(p):
     'volumen : VOLUMEN EQUALS NUMBER'
     names[p[1]] = p[3]
 
-def p_statement_journal_assign(p):
-    'journal : JOURNAL EQUALS LLAVE BLOQUE RLLAVE'
+def p_statement_series_assing(p):
+    'series : SERIES EQUALS NUMBER'
     names[p[1]] = p[3]
 
-def p_statement_number_assign(p):
-    'numero : NUMERO EQUALS NUMBER'
+def p_statement_address_assing(p):
+    'address : ADDRESS EQUALS LLLAVE BLOQUE RLLAVE'
+    names[p[1]] = p[4]
+
+def p_statement_edition_assign(p):
+    'edition : EDITION EQUALS NUMBER'
     names[p[1]] = p[3]
 
 def p_statement_mes_assign(p):
     'mes : MONTH EQUALS NUMBER'
     names[p[1]] = p[3]
 
+def p_statement_note_assign(p):
+    'nota : NOTE EQUALS LLLAVE BLOQUE RLLAVE'
+    names[p[1]] = p[4]
+
 def p_expression_name(p):
-    'expression : ARROBA ARTICULO LLLAVE NAME COMMA'
+    'expression : ARROBA BOOK LLLAVE NAME COMMA'
     names[p[0]] = p[4]
 
 def p_expression_number(p):
     'expression : NUMBER'
+    p[0] = p[1]
+def p_statement_isbn_assign(p):
+    'isbn : ISBN EQUALS NUMBER'
+    names[p[1]] = p[3]
 
 def p_estructura(p):
-    '''articulo : ARROBA ARTICULO LLLAVE NAME COMMA autor COMMA titulo COMMA journal COMMA ano COMMA numero COMMA pagina COMMA mes COMMA nota COMMA volumen COMMA'''
+    '''book : ARROBA BOOK LLLAVE NAME COMMA autor COMMA titulo COMMA publicado COMMA ano COMMA volumen COMMA series COMMA address COMMA edition COMMA mes COMMA nota COMMA isbn RLLAVE'''
     print("si vale la estructura")
 
 
