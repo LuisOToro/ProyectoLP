@@ -1,9 +1,8 @@
 .idea/*
 __pycache__/*
 *.pdf
-test.py
 *.png
 *.jpg
-bibtext.py
-bibtext-ayudante.py
-test.py
+no sirve/*
+parsetab.py
+parser.out

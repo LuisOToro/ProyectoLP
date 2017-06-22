@@ -1,0 +1,34 @@
+
+
+
+
+def p_statement_note_assign(p):
+    'nota : NOTE EQUALS LLLAVE BLOQUE RLLAVE'
+    names[p[1]] = p[4]
+
+def p_statement_volumen_assign(p):
+    'volumen : VOLUMEN EQUALS NUMBER'
+    names[p[1]] = p[3]
+
+def p_statement_journal_assign(p):
+    'journal : JOURNAL EQUALS LLLAVE BLOQUE RLLAVE'
+    names[p[1]] = p[4]
+
+def p_statement_number_assign(p):
+    'numero : NUMERO EQUALS NUMBER'
+    names[p[1]] = p[3]
+
+def p_statement_mes_assign(p):
+    'mes : MONTH EQUALS NUMBER'
+    names[p[1]] = p[3]
+    print(5)
+
+def p_expression_name(p):
+    'statement : ARROBA ARTICULO LLLAVE NAME COMMA'
+    names[p[0]] = p[4]
+
+
+
+"""def p_estructura(p):
+    '''articulo : ARROBA ARTICULO LLLAVE NAME COMMA autor COMMA titulo COMMA journal COMMA ano COMMA numero COMMA pagina COMMA mes COMMA nota COMMA volumen RLLAVE'''
+    print("si vale la estructura")"""

@@ -1,7 +1,8 @@
-from tokens import tokens
+import tokens
 #desde aqui analizador sintactico
 import ply.yacc as yacc
-names = []
+tokens  = tokens.tokens
+names = {}
 
 precedence = (
         ('left', 'PLUS', 'MINUS'),
@@ -11,28 +12,42 @@ precedence = (
 
 
 def p_statement_bloque(p):
-    'statement : BLOQUE'
+    'statement : STRING'
     p[0] = p[1]
-    print("exito")
 
 def p_statement_arroba_assign(p):
     'statement : ARROBA BOOK'
     names[p[0]] = p[2]
 
+def p_statement_reservadas(p):
+    '''statement : titulo
+                    | autor
+                    | anio
+                    | series
+                    | nota
+                    | volumen
+                    | direccion
+                    | edition
+                    | mes
+                    | isbn
+                    | publicado
+                    | book'''
+    p[0] = p[1]
+
 def p_statement_title_assign(p):
-    'titulo : TITLE EQUALS LLLAVE BLOQUE RLLAVE'
+    'titulo : TITLE EQUALS LLLAVE STRING RLLAVE'
     names[p[1]] = p[4]
 
 def p_statement_autor_assign(p):
-    'autor : AUTOR EQUALS LLLAVE BLOQUE RLLAVE'
+    'autor : AUTOR EQUALS LLLAVE STRING RLLAVE'
     names[p[1]] = p[4]
 
 def p_statement_publisher(p):
-    'publicado : PUBLISHER EQUALS LLAVE BLOQUE RLLAVE'
+    'publicado : PUBLISHER EQUALS LLLAVE STRING RLLAVE'
     names[p[1]] = p[4]
 
 def p_statement_year_assing(p):
-    'ano : YEAR EQUALS NUMBER'
+    'anio : YEAR EQUALS NUMBER'
     names[p[1]] = p[3]
 
 def p_statement_volumen_assign(p):
@@ -44,7 +59,7 @@ def p_statement_series_assing(p):
     names[p[1]] = p[3]
 
 def p_statement_address_assing(p):
-    'address : ADDRESS EQUALS LLLAVE BLOQUE RLLAVE'
+    'direccion : ADDRESS EQUALS LLLAVE STRING RLLAVE'
     names[p[1]] = p[4]
 
 def p_statement_edition_assign(p):
@@ -56,24 +71,24 @@ def p_statement_mes_assign(p):
     names[p[1]] = p[3]
 
 def p_statement_note_assign(p):
-    'nota : NOTE EQUALS LLLAVE BLOQUE RLLAVE'
+    'nota : NOTE EQUALS LLLAVE STRING RLLAVE'
     names[p[1]] = p[4]
 
 def p_expression_name(p):
-    'expression : ARROBA BOOK LLLAVE NAME COMMA'
+    'statement : ARROBA BOOK LLLAVE STRING COMMA'
     names[p[0]] = p[4]
 
 def p_expression_number(p):
     'expression : NUMBER'
     p[0] = p[1]
+
 def p_statement_isbn_assign(p):
-    'isbn : ISBN EQUALS NUMBER'
-    names[p[1]] = p[3]
+    'isbn : ISBN EQUALS LLLAVE NUMBER RLLAVE'
+    names[p[1]] = p[4]
 
 def p_estructura(p):
-    '''book : ARROBA BOOK LLLAVE NAME COMMA autor COMMA titulo COMMA publicado COMMA ano COMMA volumen COMMA series COMMA address COMMA edition COMMA mes COMMA nota COMMA isbn RLLAVE'''
+    '''book : ARROBA BOOK LLLAVE STRING COMMA autor COMMA titulo COMMA publicado COMMA anio COMMA volumen COMMA series COMMA direccion COMMA edition COMMA mes COMMA nota COMMA isbn RLLAVE'''
     print("si vale la estructura")
-
 
 def p_expression_binop(p):
     '''expression : expression PLUS expression

@@ -2,98 +2,131 @@ Created by PLY version 3.10 (http://www.dabeaz.com/ply)
 
 Unused terminals:
 
+    ARTICULO
+    PAGE
+    VOLUMEN
+    JOURNAL
+    NUMERO
     PUBLISHER
     SERIES
     ADDRESS
-    EDITION
     ISBN
     BOOKTITLE
     EDITOR
     ONGANIZATION
+    BOOK
+    EDITION
+    CONFERENCE
+    MANUAL
 
 Grammar
 
 Rule 0     S' -> statement
-Rule 1     statement -> BLOQUE
-Rule 2     statement -> ARROBA ARTICULO
-Rule 3     titulo -> TITLE EQUALS LLLAVE BLOQUE RLLAVE
-Rule 4     autor -> AUTOR EQUALS LLLAVE BLOQUE RLLAVE
-Rule 5     ano -> YEAR EQUALS NUMBER
-Rule 6     pagina -> PAGE EQUALS LLLAVE BLOQUE RLLAVE
-Rule 7     nota -> NOTE EQUALS LLLAVE BLOQUE RLLAVE
-Rule 8     volumen -> VOLUMEN EQUALS NUMBER
-Rule 9     journal -> JOURNAL EQUALS LLLAVE BLOQUE RLLAVE
-Rule 10    numero -> NUMERO EQUALS NUMBER
-Rule 11    mes -> MONTH EQUALS NUMBER
-Rule 12    expression -> ARROBA ARTICULO LLLAVE NAME COMMA
-Rule 13    expression -> NUMBER
-Rule 14    articulo -> ARROBA ARTICULO LLLAVE NAME COMMA autor COMMA titulo COMMA journal COMMA ano COMMA numero COMMA pagina COMMA mes COMMA nota COMMA volumen COMMA
-Rule 15    expression -> expression PLUS expression
-Rule 16    expression -> expression MINUS expression
-Rule 17    expression -> expression TIMES expression
-Rule 18    expression -> expression DIVIDE expression
+Rule 1     statement -> titulo
+Rule 2     statement -> autor
+Rule 3     statement -> unpublished
+Rule 4     statement -> nota
+Rule 5     statement -> mes
+Rule 6     statement -> anio
+Rule 7     statement -> STRING
+Rule 8     anio -> YEAR EQUALS NUMBER
+Rule 9     statement -> ARROBA UNPUBLISHED
+Rule 10    titulo -> TITLE EQUALS LLLAVE STRING RLLAVE
+Rule 11    autor -> AUTOR EQUALS LLLAVE STRING RLLAVE
+Rule 12    nota -> NOTE EQUALS LLLAVE STRING RLLAVE
+Rule 13    mes -> MONTH EQUALS NUMBER
+Rule 14    statement -> ARROBA UNPUBLISHED LLLAVE STRING COMMA
+Rule 15    expression -> NUMBER
+Rule 16    unpublished -> ARROBA UNPUBLISHED LLLAVE STRING COMMA autor COMMA titulo COMMA nota COMMA mes COMMA anio RLLAVE
+Rule 17    expression -> expression PLUS expression
+Rule 18    expression -> expression MINUS expression
+Rule 19    expression -> expression TIMES expression
+Rule 20    expression -> expression DIVIDE expression
 
 Terminals, with rules where they appear
 
 ADDRESS              : 
-ARROBA               : 2 12 14
-ARTICULO             : 2 12 14
-AUTOR                : 4
-BLOQUE               : 1 3 4 6 7 9
+ARROBA               : 9 14 16
+ARTICULO             : 
+AUTOR                : 11
+BOOK                 : 
 BOOKTITLE            : 
-COMMA                : 12 14 14 14 14 14 14 14 14 14 14
-DIVIDE               : 18
+COMMA                : 14 16 16 16 16 16
+CONFERENCE           : 
+DIVIDE               : 20
 EDITION              : 
 EDITOR               : 
-EQUALS               : 3 4 5 6 7 8 9 10 11
+EQUALS               : 8 10 11 12 13
 ISBN                 : 
-JOURNAL              : 9
-LLLAVE               : 3 4 6 7 9 12 14
-MINUS                : 16
-MONTH                : 11
-NAME                 : 12 14
-NOTE                 : 7
-NUMBER               : 5 8 10 11 13
-NUMERO               : 10
+JOURNAL              : 
+LLLAVE               : 10 11 12 14 16
+MANUAL               : 
+MINUS                : 18
+MONTH                : 13
+NOTE                 : 12
+NUMBER               : 8 13 15
+NUMERO               : 
 ONGANIZATION         : 
-PAGE                 : 6
-PLUS                 : 15
+PAGE                 : 
+PLUS                 : 17
 PUBLISHER            : 
-RLLAVE               : 3 4 6 7 9
+RLLAVE               : 10 11 12 16
 SERIES               : 
-TIMES                : 17
-TITLE                : 3
-VOLUMEN              : 8
-YEAR                 : 5
+STRING               : 7 10 11 12 14 16
+TIMES                : 19
+TITLE                : 10
+UNPUBLISHED          : 9 14 16
+VOLUMEN              : 
+YEAR                 : 8
 error                : 
 
 Nonterminals, with rules where they appear
 
-ano                  : 14
-articulo             : 
-autor                : 14
-expression           : 15 15 16 16 17 17 18 18
-journal              : 14
-mes                  : 14
-nota                 : 14
-numero               : 14
-pagina               : 14
+anio                 : 6 16
+autor                : 2 16
+expression           : 17 17 18 18 19 19 20 20
+mes                  : 5 16
+nota                 : 4 16
 statement            : 0
-titulo               : 14
-volumen              : 14
+titulo               : 1 16
+unpublished          : 3
 
 Parsing method: LALR
 
 state 0
 
     (0) S' -> . statement
-    (1) statement -> . BLOQUE
-    (2) statement -> . ARROBA ARTICULO
+    (1) statement -> . titulo
+    (2) statement -> . autor
+    (3) statement -> . unpublished
+    (4) statement -> . nota
+    (5) statement -> . mes
+    (6) statement -> . anio
+    (7) statement -> . STRING
+    (9) statement -> . ARROBA UNPUBLISHED
+    (14) statement -> . ARROBA UNPUBLISHED LLLAVE STRING COMMA
+    (10) titulo -> . TITLE EQUALS LLLAVE STRING RLLAVE
+    (11) autor -> . AUTOR EQUALS LLLAVE STRING RLLAVE
+    (16) unpublished -> . ARROBA UNPUBLISHED LLLAVE STRING COMMA autor COMMA titulo COMMA nota COMMA mes COMMA anio RLLAVE
+    (12) nota -> . NOTE EQUALS LLLAVE STRING RLLAVE
+    (13) mes -> . MONTH EQUALS NUMBER
+    (8) anio -> . YEAR EQUALS NUMBER
 
-    BLOQUE          shift and go to state 2
-    ARROBA          shift and go to state 3
+    STRING          shift and go to state 8
+    ARROBA          shift and go to state 9
+    TITLE           shift and go to state 10
+    AUTOR           shift and go to state 11
+    NOTE            shift and go to state 12
+    MONTH           shift and go to state 13
+    YEAR            shift and go to state 14
 
     statement                      shift and go to state 1
+    titulo                         shift and go to state 2
+    autor                          shift and go to state 3
+    unpublished                    shift and go to state 4
+    nota                           shift and go to state 5
+    mes                            shift and go to state 6
+    anio                           shift and go to state 7
 
 state 1
 
@@ -103,21 +136,325 @@ state 1
 
 state 2
 
-    (1) statement -> BLOQUE .
+    (1) statement -> titulo .
 
-    $end            reduce using rule 1 (statement -> BLOQUE .)
+    $end            reduce using rule 1 (statement -> titulo .)
 
 
 state 3
 
-    (2) statement -> ARROBA . ARTICULO
+    (2) statement -> autor .
 
-    ARTICULO        shift and go to state 4
+    $end            reduce using rule 2 (statement -> autor .)
 
 
 state 4
 
-    (2) statement -> ARROBA ARTICULO .
+    (3) statement -> unpublished .
 
-    $end            reduce using rule 2 (statement -> ARROBA ARTICULO .)
+    $end            reduce using rule 3 (statement -> unpublished .)
+
+
+state 5
+
+    (4) statement -> nota .
+
+    $end            reduce using rule 4 (statement -> nota .)
+
+
+state 6
+
+    (5) statement -> mes .
+
+    $end            reduce using rule 5 (statement -> mes .)
+
+
+state 7
+
+    (6) statement -> anio .
+
+    $end            reduce using rule 6 (statement -> anio .)
+
+
+state 8
+
+    (7) statement -> STRING .
+
+    $end            reduce using rule 7 (statement -> STRING .)
+
+
+state 9
+
+    (9) statement -> ARROBA . UNPUBLISHED
+    (14) statement -> ARROBA . UNPUBLISHED LLLAVE STRING COMMA
+    (16) unpublished -> ARROBA . UNPUBLISHED LLLAVE STRING COMMA autor COMMA titulo COMMA nota COMMA mes COMMA anio RLLAVE
+
+    UNPUBLISHED     shift and go to state 15
+
+
+state 10
+
+    (10) titulo -> TITLE . EQUALS LLLAVE STRING RLLAVE
+
+    EQUALS          shift and go to state 16
+
+
+state 11
+
+    (11) autor -> AUTOR . EQUALS LLLAVE STRING RLLAVE
+
+    EQUALS          shift and go to state 17
+
+
+state 12
+
+    (12) nota -> NOTE . EQUALS LLLAVE STRING RLLAVE
+
+    EQUALS          shift and go to state 18
+
+
+state 13
+
+    (13) mes -> MONTH . EQUALS NUMBER
+
+    EQUALS          shift and go to state 19
+
+
+state 14
+
+    (8) anio -> YEAR . EQUALS NUMBER
+
+    EQUALS          shift and go to state 20
+
+
+state 15
+
+    (9) statement -> ARROBA UNPUBLISHED .
+    (14) statement -> ARROBA UNPUBLISHED . LLLAVE STRING COMMA
+    (16) unpublished -> ARROBA UNPUBLISHED . LLLAVE STRING COMMA autor COMMA titulo COMMA nota COMMA mes COMMA anio RLLAVE
+
+    $end            reduce using rule 9 (statement -> ARROBA UNPUBLISHED .)
+    LLLAVE          shift and go to state 21
+
+
+state 16
+
+    (10) titulo -> TITLE EQUALS . LLLAVE STRING RLLAVE
+
+    LLLAVE          shift and go to state 22
+
+
+state 17
+
+    (11) autor -> AUTOR EQUALS . LLLAVE STRING RLLAVE
+
+    LLLAVE          shift and go to state 23
+
+
+state 18
+
+    (12) nota -> NOTE EQUALS . LLLAVE STRING RLLAVE
+
+    LLLAVE          shift and go to state 24
+
+
+state 19
+
+    (13) mes -> MONTH EQUALS . NUMBER
+
+    NUMBER          shift and go to state 25
+
+
+state 20
+
+    (8) anio -> YEAR EQUALS . NUMBER
+
+    NUMBER          shift and go to state 26
+
+
+state 21
+
+    (14) statement -> ARROBA UNPUBLISHED LLLAVE . STRING COMMA
+    (16) unpublished -> ARROBA UNPUBLISHED LLLAVE . STRING COMMA autor COMMA titulo COMMA nota COMMA mes COMMA anio RLLAVE
+
+    STRING          shift and go to state 27
+
+
+state 22
+
+    (10) titulo -> TITLE EQUALS LLLAVE . STRING RLLAVE
+
+    STRING          shift and go to state 28
+
+
+state 23
+
+    (11) autor -> AUTOR EQUALS LLLAVE . STRING RLLAVE
+
+    STRING          shift and go to state 29
+
+
+state 24
+
+    (12) nota -> NOTE EQUALS LLLAVE . STRING RLLAVE
+
+    STRING          shift and go to state 30
+
+
+state 25
+
+    (13) mes -> MONTH EQUALS NUMBER .
+
+    $end            reduce using rule 13 (mes -> MONTH EQUALS NUMBER .)
+    COMMA           reduce using rule 13 (mes -> MONTH EQUALS NUMBER .)
+
+
+state 26
+
+    (8) anio -> YEAR EQUALS NUMBER .
+
+    $end            reduce using rule 8 (anio -> YEAR EQUALS NUMBER .)
+    RLLAVE          reduce using rule 8 (anio -> YEAR EQUALS NUMBER .)
+
+
+state 27
+
+    (14) statement -> ARROBA UNPUBLISHED LLLAVE STRING . COMMA
+    (16) unpublished -> ARROBA UNPUBLISHED LLLAVE STRING . COMMA autor COMMA titulo COMMA nota COMMA mes COMMA anio RLLAVE
+
+    COMMA           shift and go to state 31
+
+
+state 28
+
+    (10) titulo -> TITLE EQUALS LLLAVE STRING . RLLAVE
+
+    RLLAVE          shift and go to state 32
+
+
+state 29
+
+    (11) autor -> AUTOR EQUALS LLLAVE STRING . RLLAVE
+
+    RLLAVE          shift and go to state 33
+
+
+state 30
+
+    (12) nota -> NOTE EQUALS LLLAVE STRING . RLLAVE
+
+    RLLAVE          shift and go to state 34
+
+
+state 31
+
+    (14) statement -> ARROBA UNPUBLISHED LLLAVE STRING COMMA .
+    (16) unpublished -> ARROBA UNPUBLISHED LLLAVE STRING COMMA . autor COMMA titulo COMMA nota COMMA mes COMMA anio RLLAVE
+    (11) autor -> . AUTOR EQUALS LLLAVE STRING RLLAVE
+
+    $end            reduce using rule 14 (statement -> ARROBA UNPUBLISHED LLLAVE STRING COMMA .)
+    AUTOR           shift and go to state 11
+
+    autor                          shift and go to state 35
+
+state 32
+
+    (10) titulo -> TITLE EQUALS LLLAVE STRING RLLAVE .
+
+    $end            reduce using rule 10 (titulo -> TITLE EQUALS LLLAVE STRING RLLAVE .)
+    COMMA           reduce using rule 10 (titulo -> TITLE EQUALS LLLAVE STRING RLLAVE .)
+
+
+state 33
+
+    (11) autor -> AUTOR EQUALS LLLAVE STRING RLLAVE .
+
+    $end            reduce using rule 11 (autor -> AUTOR EQUALS LLLAVE STRING RLLAVE .)
+    COMMA           reduce using rule 11 (autor -> AUTOR EQUALS LLLAVE STRING RLLAVE .)
+
+
+state 34
+
+    (12) nota -> NOTE EQUALS LLLAVE STRING RLLAVE .
+
+    $end            reduce using rule 12 (nota -> NOTE EQUALS LLLAVE STRING RLLAVE .)
+    COMMA           reduce using rule 12 (nota -> NOTE EQUALS LLLAVE STRING RLLAVE .)
+
+
+state 35
+
+    (16) unpublished -> ARROBA UNPUBLISHED LLLAVE STRING COMMA autor . COMMA titulo COMMA nota COMMA mes COMMA anio RLLAVE
+
+    COMMA           shift and go to state 36
+
+
+state 36
+
+    (16) unpublished -> ARROBA UNPUBLISHED LLLAVE STRING COMMA autor COMMA . titulo COMMA nota COMMA mes COMMA anio RLLAVE
+    (10) titulo -> . TITLE EQUALS LLLAVE STRING RLLAVE
+
+    TITLE           shift and go to state 10
+
+    titulo                         shift and go to state 37
+
+state 37
+
+    (16) unpublished -> ARROBA UNPUBLISHED LLLAVE STRING COMMA autor COMMA titulo . COMMA nota COMMA mes COMMA anio RLLAVE
+
+    COMMA           shift and go to state 38
+
+
+state 38
+
+    (16) unpublished -> ARROBA UNPUBLISHED LLLAVE STRING COMMA autor COMMA titulo COMMA . nota COMMA mes COMMA anio RLLAVE
+    (12) nota -> . NOTE EQUALS LLLAVE STRING RLLAVE
+
+    NOTE            shift and go to state 12
+
+    nota                           shift and go to state 39
+
+state 39
+
+    (16) unpublished -> ARROBA UNPUBLISHED LLLAVE STRING COMMA autor COMMA titulo COMMA nota . COMMA mes COMMA anio RLLAVE
+
+    COMMA           shift and go to state 40
+
+
+state 40
+
+    (16) unpublished -> ARROBA UNPUBLISHED LLLAVE STRING COMMA autor COMMA titulo COMMA nota COMMA . mes COMMA anio RLLAVE
+    (13) mes -> . MONTH EQUALS NUMBER
+
+    MONTH           shift and go to state 13
+
+    mes                            shift and go to state 41
+
+state 41
+
+    (16) unpublished -> ARROBA UNPUBLISHED LLLAVE STRING COMMA autor COMMA titulo COMMA nota COMMA mes . COMMA anio RLLAVE
+
+    COMMA           shift and go to state 42
+
+
+state 42
+
+    (16) unpublished -> ARROBA UNPUBLISHED LLLAVE STRING COMMA autor COMMA titulo COMMA nota COMMA mes COMMA . anio RLLAVE
+    (8) anio -> . YEAR EQUALS NUMBER
+
+    YEAR            shift and go to state 14
+
+    anio                           shift and go to state 43
+
+state 43
+
+    (16) unpublished -> ARROBA UNPUBLISHED LLLAVE STRING COMMA autor COMMA titulo COMMA nota COMMA mes COMMA anio . RLLAVE
+
+    RLLAVE          shift and go to state 44
+
+
+state 44
+
+    (16) unpublished -> ARROBA UNPUBLISHED LLLAVE STRING COMMA autor COMMA titulo COMMA nota COMMA mes COMMA anio RLLAVE .
+
+    $end            reduce using rule 16 (unpublished -> ARROBA UNPUBLISHED LLLAVE STRING COMMA autor COMMA titulo COMMA nota COMMA mes COMMA anio RLLAVE .)
 
