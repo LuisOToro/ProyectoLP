@@ -5,9 +5,9 @@ _tabversion = '3.10'
 
 _lr_method = 'LALR'
 
-_lr_signature = 'leftPLUSMINUSleftTIMESDIVIDELLLAVE RLLAVE EQUALS COMMA NUMBER ARROBA PLUS MINUS TIMES DIVIDE STRING ARTICULO AUTOR TITLE YEAR PAGE NOTE VOLUMEN JOURNAL NUMERO MONTH PUBLISHER SERIES ADDRESS ISBN BOOKTITLE EDITOR ONGANIZATION BOOK EDITION CONFERENCE MANUAL UNPUBLISHEDstatement : titulo\n                    | autor\n                    | unpublished\n                    | nota\n                    | mes\n                    | aniostatement : STRINGanio : YEAR EQUALS NUMBERstatement : ARROBA UNPUBLISHEDtitulo : TITLE EQUALS LLLAVE STRING RLLAVEautor : AUTOR EQUALS LLLAVE STRING RLLAVEnota : NOTE EQUALS LLLAVE STRING RLLAVEmes : MONTH EQUALS NUMBERstatement : ARROBA UNPUBLISHED LLLAVE STRING COMMAexpression : NUMBERunpublished : ARROBA UNPUBLISHED LLLAVE STRING COMMA autor COMMA titulo COMMA nota COMMA mes COMMA anio RLLAVEexpression : expression PLUS expression\n                      | expression MINUS expression\n                      | expression TIMES expression\n                      | expression DIVIDE expression'
+_lr_signature = 'leftPLUSMINUSleftTIMESDIVIDELLLAVE RLLAVE EQUALS COMMA NUMBER ARROBA PLUS MINUS TIMES DIVIDE STRING ARTICULO AUTOR TITLE YEAR PAGE NOTE VOLUMEN JOURNAL NUMERO MONTH PUBLISHER SERIES ADDRESS ISBN BOOKTITLE EDITOR ONGANIZATION BOOK EDITION CONFERENCE MANUAL UNPUBLISHEDstatement : STRINGstatement : ARROBA ARTICULOstatement : titulo\n                    | autor\n                    | anio\n                    | pagina\n                    | nota\n                    | volumen\n                    | journal\n                    | numero\n                    | mes\n                    | articulotitulo : TITLE EQUALS LLLAVE STRING RLLAVEautor : AUTOR EQUALS LLLAVE STRING RLLAVEanio : YEAR EQUALS NUMBERpagina : PAGE EQUALS LLLAVE NUMBER MINUS NUMBER RLLAVEexpression : NUMBERnota : NOTE EQUALS LLLAVE STRING RLLAVEvolumen : VOLUMEN EQUALS NUMBERjournal : JOURNAL EQUALS LLLAVE STRING RLLAVEnumero : NUMERO EQUALS NUMBERmes : MONTH EQUALS NUMBERarticulo : ARROBA ARTICULO LLLAVE STRING COMMA autor COMMA titulo COMMA journal COMMA anio COMMA numero COMMA pagina COMMA mes COMMA nota COMMA volumen RLLAVEexpression : expression PLUS expression\n                      | expression MINUS expression\n                      | expression TIMES expression\n                      | expression DIVIDE expression'
     
-_lr_action_items = {'STRING':([0,21,22,23,24,],[8,27,28,29,30,]),'ARROBA':([0,],[9,]),'TITLE':([0,36,],[10,10,]),'AUTOR':([0,31,],[11,11,]),'NOTE':([0,38,],[12,12,]),'MONTH':([0,40,],[13,13,]),'YEAR':([0,42,],[14,14,]),'$end':([1,2,3,4,5,6,7,8,15,25,26,31,32,33,34,44,],[0,-1,-2,-3,-4,-5,-6,-7,-9,-13,-8,-14,-10,-11,-12,-16,]),'UNPUBLISHED':([9,],[15,]),'EQUALS':([10,11,12,13,14,],[16,17,18,19,20,]),'LLLAVE':([15,16,17,18,],[21,22,23,24,]),'NUMBER':([19,20,],[25,26,]),'COMMA':([25,27,32,33,34,35,37,39,41,],[-13,31,-10,-11,-12,36,38,40,42,]),'RLLAVE':([26,28,29,30,43,],[-8,32,33,34,44,]),}
+_lr_action_items = {'STRING':([0,33,34,35,38,40,],[2,43,44,45,47,48,]),'ARROBA':([0,],[3,]),'TITLE':([0,57,],[14,14,]),'AUTOR':([0,49,],[15,15,]),'YEAR':([0,62,],[16,16,]),'PAGE':([0,66,],[17,17,]),'NOTE':([0,70,],[18,18,]),'VOLUMEN':([0,72,],[19,19,]),'JOURNAL':([0,60,],[20,20,]),'NUMERO':([0,64,],[21,21,]),'MONTH':([0,68,],[22,22,]),'$end':([1,2,4,5,6,7,8,9,10,11,12,13,23,36,39,41,42,50,51,53,54,58,74,],[0,-1,-3,-4,-5,-6,-7,-8,-9,-10,-11,-12,-2,-15,-19,-21,-22,-13,-14,-18,-20,-16,-23,]),'ARTICULO':([3,],[23,]),'EQUALS':([14,15,16,17,18,19,20,21,22,],[24,25,26,27,28,29,30,31,32,]),'LLLAVE':([23,24,25,27,28,30,],[33,34,35,37,38,40,]),'NUMBER':([26,29,31,32,37,52,],[36,39,41,42,46,56,]),'COMMA':([36,41,42,43,50,51,53,54,55,58,59,61,63,65,67,69,71,],[-15,-21,-22,49,-13,-14,-18,-20,57,-16,60,62,64,66,68,70,72,]),'RLLAVE':([39,44,45,47,48,56,73,],[-19,50,51,53,54,58,74,]),'MINUS':([46,],[52,]),}
 
 _lr_action = {}
 for _k, _v in _lr_action_items.items():
@@ -16,7 +16,7 @@ for _k, _v in _lr_action_items.items():
       _lr_action[_x][_k] = _y
 del _lr_action_items
 
-_lr_goto_items = {'statement':([0,],[1,]),'titulo':([0,36,],[2,37,]),'autor':([0,31,],[3,35,]),'unpublished':([0,],[4,]),'nota':([0,38,],[5,39,]),'mes':([0,40,],[6,41,]),'anio':([0,42,],[7,43,]),}
+_lr_goto_items = {'statement':([0,],[1,]),'titulo':([0,57,],[4,59,]),'autor':([0,49,],[5,55,]),'anio':([0,62,],[6,63,]),'pagina':([0,66,],[7,67,]),'nota':([0,70,],[8,71,]),'volumen':([0,72,],[9,73,]),'journal':([0,60,],[10,61,]),'numero':([0,64,],[11,65,]),'mes':([0,68,],[12,69,]),'articulo':([0,],[13,]),}
 
 _lr_goto = {}
 for _k, _v in _lr_goto_items.items():
@@ -26,24 +26,31 @@ for _k, _v in _lr_goto_items.items():
 del _lr_goto_items
 _lr_productions = [
   ("S' -> statement","S'",1,None,None,None),
-  ('statement -> titulo','statement',1,'p_statement_reservadas','A_Sintactico_publicacion_Bibtext.py',14),
-  ('statement -> autor','statement',1,'p_statement_reservadas','A_Sintactico_publicacion_Bibtext.py',15),
-  ('statement -> unpublished','statement',1,'p_statement_reservadas','A_Sintactico_publicacion_Bibtext.py',16),
-  ('statement -> nota','statement',1,'p_statement_reservadas','A_Sintactico_publicacion_Bibtext.py',17),
-  ('statement -> mes','statement',1,'p_statement_reservadas','A_Sintactico_publicacion_Bibtext.py',18),
-  ('statement -> anio','statement',1,'p_statement_reservadas','A_Sintactico_publicacion_Bibtext.py',19),
-  ('statement -> STRING','statement',1,'p_statement_bloque','A_Sintactico_publicacion_Bibtext.py',23),
-  ('anio -> YEAR EQUALS NUMBER','anio',3,'p_statement_year_assing','A_Sintactico_publicacion_Bibtext.py',28),
-  ('statement -> ARROBA UNPUBLISHED','statement',2,'p_statement_arroba_assign','A_Sintactico_publicacion_Bibtext.py',33),
-  ('titulo -> TITLE EQUALS LLLAVE STRING RLLAVE','titulo',5,'p_statement_title_assign','A_Sintactico_publicacion_Bibtext.py',38),
-  ('autor -> AUTOR EQUALS LLLAVE STRING RLLAVE','autor',5,'p_statement_autor_assign','A_Sintactico_publicacion_Bibtext.py',43),
-  ('nota -> NOTE EQUALS LLLAVE STRING RLLAVE','nota',5,'p_statement_note_assign','A_Sintactico_publicacion_Bibtext.py',48),
-  ('mes -> MONTH EQUALS NUMBER','mes',3,'p_statement_mes_assign','A_Sintactico_publicacion_Bibtext.py',53),
-  ('statement -> ARROBA UNPUBLISHED LLLAVE STRING COMMA','statement',5,'p_expression_name','A_Sintactico_publicacion_Bibtext.py',58),
-  ('expression -> NUMBER','expression',1,'p_expression_number','A_Sintactico_publicacion_Bibtext.py',63),
-  ('unpublished -> ARROBA UNPUBLISHED LLLAVE STRING COMMA autor COMMA titulo COMMA nota COMMA mes COMMA anio RLLAVE','unpublished',15,'p_estructura','A_Sintactico_publicacion_Bibtext.py',67),
-  ('expression -> expression PLUS expression','expression',3,'p_expression_binop','A_Sintactico_publicacion_Bibtext.py',72),
-  ('expression -> expression MINUS expression','expression',3,'p_expression_binop','A_Sintactico_publicacion_Bibtext.py',73),
-  ('expression -> expression TIMES expression','expression',3,'p_expression_binop','A_Sintactico_publicacion_Bibtext.py',74),
-  ('expression -> expression DIVIDE expression','expression',3,'p_expression_binop','A_Sintactico_publicacion_Bibtext.py',75),
+  ('statement -> STRING','statement',1,'p_statement_bloque','A_Sintactico_Article_Bibtext.py',18),
+  ('statement -> ARROBA ARTICULO','statement',2,'p_statement_arroba_assign','A_Sintactico_Article_Bibtext.py',23),
+  ('statement -> titulo','statement',1,'p_statement_reservadas','A_Sintactico_Article_Bibtext.py',27),
+  ('statement -> autor','statement',1,'p_statement_reservadas','A_Sintactico_Article_Bibtext.py',28),
+  ('statement -> anio','statement',1,'p_statement_reservadas','A_Sintactico_Article_Bibtext.py',29),
+  ('statement -> pagina','statement',1,'p_statement_reservadas','A_Sintactico_Article_Bibtext.py',30),
+  ('statement -> nota','statement',1,'p_statement_reservadas','A_Sintactico_Article_Bibtext.py',31),
+  ('statement -> volumen','statement',1,'p_statement_reservadas','A_Sintactico_Article_Bibtext.py',32),
+  ('statement -> journal','statement',1,'p_statement_reservadas','A_Sintactico_Article_Bibtext.py',33),
+  ('statement -> numero','statement',1,'p_statement_reservadas','A_Sintactico_Article_Bibtext.py',34),
+  ('statement -> mes','statement',1,'p_statement_reservadas','A_Sintactico_Article_Bibtext.py',35),
+  ('statement -> articulo','statement',1,'p_statement_reservadas','A_Sintactico_Article_Bibtext.py',36),
+  ('titulo -> TITLE EQUALS LLLAVE STRING RLLAVE','titulo',5,'p_statement_title_assign','A_Sintactico_Article_Bibtext.py',40),
+  ('autor -> AUTOR EQUALS LLLAVE STRING RLLAVE','autor',5,'p_statement_autor_assign','A_Sintactico_Article_Bibtext.py',44),
+  ('anio -> YEAR EQUALS NUMBER','anio',3,'p_statement_year_assing','A_Sintactico_Article_Bibtext.py',48),
+  ('pagina -> PAGE EQUALS LLLAVE NUMBER MINUS NUMBER RLLAVE','pagina',7,'p_statement_paginas_assign','A_Sintactico_Article_Bibtext.py',52),
+  ('expression -> NUMBER','expression',1,'p_expression_number','A_Sintactico_Article_Bibtext.py',58),
+  ('nota -> NOTE EQUALS LLLAVE STRING RLLAVE','nota',5,'p_statement_note_assign','A_Sintactico_Article_Bibtext.py',62),
+  ('volumen -> VOLUMEN EQUALS NUMBER','volumen',3,'p_statement_volumen_assign','A_Sintactico_Article_Bibtext.py',66),
+  ('journal -> JOURNAL EQUALS LLLAVE STRING RLLAVE','journal',5,'p_statement_journal_assign','A_Sintactico_Article_Bibtext.py',70),
+  ('numero -> NUMERO EQUALS NUMBER','numero',3,'p_statement_number_assign','A_Sintactico_Article_Bibtext.py',74),
+  ('mes -> MONTH EQUALS NUMBER','mes',3,'p_statement_mes_assign','A_Sintactico_Article_Bibtext.py',78),
+  ('articulo -> ARROBA ARTICULO LLLAVE STRING COMMA autor COMMA titulo COMMA journal COMMA anio COMMA numero COMMA pagina COMMA mes COMMA nota COMMA volumen RLLAVE','articulo',23,'p_estructura','A_Sintactico_Article_Bibtext.py',82),
+  ('expression -> expression PLUS expression','expression',3,'p_expression_binop','A_Sintactico_Article_Bibtext.py',89),
+  ('expression -> expression MINUS expression','expression',3,'p_expression_binop','A_Sintactico_Article_Bibtext.py',90),
+  ('expression -> expression TIMES expression','expression',3,'p_expression_binop','A_Sintactico_Article_Bibtext.py',91),
+  ('expression -> expression DIVIDE expression','expression',3,'p_expression_binop','A_Sintactico_Article_Bibtext.py',92),
 ]
