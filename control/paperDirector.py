@@ -1,4 +1,4 @@
-from modelo import Class_Paper_Apa,Class_Paper_Ieee,Class_Bibtex_conference,Class_Bibtex_Book,Class_Bibtex_Article,Class_Bibtex_manual,Class_Bibtex_publicacion,Class_Tokens
+from modelo import Class_Paper_Apa,Class_Paper_Ieee,Class_Bibtex_conference,Class_Bibtex_Book,Class_Bibtex_Article,Class_Bibtex_manual,Class_Bibtex_publicacion,Class_Tokens,Class_Paper
 
 reservadas = {"articulo": "ARTICULO", "autor": "AUTOR", "titulo": "TITLE", "anio": "YEAR", "paginas": "PAGE",
                       "notas": "NOTE", "volumen": "VOLUMEN", "journal": "JOURNAL", "numero": "NUMERO",
@@ -17,11 +17,13 @@ class paperDirector:
         self.tipoPaper = tipo
         if tipo == 1:
             self.paper = Class_Paper_Apa.Paper_Apa(titulo,pais,ciudad)
+            print(self.paper.titulo)
         elif tipo == 2:
             self.paper = Class_Paper_Ieee.Paper_Ieee(titulo,pais,ciudad)
         else:
             print("El formato seleccionado no es valido, no existe el modelo de paper en la libreria")
             self.paper = None
+
 
 
     def iniciarBibtex_compiler_add_referencias(self,tipo,textoValidar):
@@ -119,4 +121,6 @@ class paperDirector:
         else:
             print("Referencia Bibtex invalida")
             print("No se agrego la referencia")
+
+
 

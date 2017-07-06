@@ -7,7 +7,7 @@ class Paper_Ieee(Class_Paper.Paper):
 
 
     def __init__(self,title,pais,ciudad):
-        Class_Paper.Paper(title, pais, ciudad)
+        Class_Paper.Paper.__init__(self,title, pais, ciudad)
         self.referencias = []
 
 
@@ -36,7 +36,7 @@ class Paper_Ieee(Class_Paper.Paper):
 
 
     def crearPdf(self,nombrepdf,titulo):
-        resumenpdf = "Resumen --"+Class_Paper.unirArraySalto(self.resumen) + "\nPalabras claves: " + Class_Paper.unirArrayKeys(self.palabrasClaves)\
+        resumenpdf = "Resumen --"+self.resumen + "\nPalabras claves: " + Class_Paper.unirArrayKeys(self.palabrasClaves)\
                      + "\nAbstract --" + Class_Paper.unirArraySalto(self.abstract) + "\nKeyworks: " + Class_Paper.unirArrayKeys(self.keyWorks)
         autores = Class_Paper.unirArrayKeys(self.autores)
         autoresC = Class_Paper.unirArraySalto(self.aoutCorpo)

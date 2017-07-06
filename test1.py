@@ -1,7 +1,7 @@
 from control import paperDirector
 
-paper = paperDirector.paperDirector(1,"mi titulo","pais","ciudad")
-paper2 = paperDirector.paperDirector(2,"mi titulo","pais","ciudad")
+paperApa = paperDirector.paperDirector(1,"mi titulo es este","pais","ciudad")
+paperIeee = paperDirector.paperDirector(2,"mi titulo","pais","ciudad")
 
 texto = "@article{mi article,  author  = {Peter Adams},   title   = {The title of the work},  journal = {The name of the journal},  year    = 1993,  number  = 2,  pages   = {201-213},  month   = 7,  note    = {An optional note},   volume  = 4}"
 
@@ -13,8 +13,17 @@ texto4 = "@manual{mi manual,  title        = {The title of the work},  author   
 
 texto5 = "@unpublished{mi unpublished,  author       = {Peter Marcheford},   title        = {The title of the work},  note         = {An optional note},  month        = 7,  year         = 1993}"
 
-paper.iniciarBibtex_compiler_add_referencias(5,texto5)
-paper2.iniciarBibtex_compiler_add_referencias(5,texto5)
+paperApa.iniciarBibtex_compiler_add_referencias(5,texto5)
+paperIeee.iniciarBibtex_compiler_add_referencias(5,texto5)
+#print(paperApa.paper)
+
+print(paperIeee.paper.referencias)
+paperApa.paper.crearPdf("jj.pdf","jjj")
+paperIeee.paper.crearPdf("jj2.pdf","jjj")
+
+
+
+
 
 
 

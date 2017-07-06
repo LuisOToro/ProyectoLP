@@ -9,7 +9,7 @@ class Paper_Apa(Class_Paper.Paper):
 
 
     def __init__(self,title,pais,ciudad):
-        Class_Paper.Paper(title, pais, ciudad)
+        Class_Paper.Paper.__init__(self,title, pais, ciudad)
         self.refencias = []
 
     def addReferenciaArticle(self, Bibtex_articulo):
@@ -34,8 +34,7 @@ class Paper_Apa(Class_Paper.Paper):
         self.refencias.append(salida)
 
     def crearPdf(self,nombrePaper,titulo):
-        resumenpdf = "Resumen --" + Class_Paper.unirArraySalto(
-            self.resumen) + "\nPalabras claves: " + Class_Paper.unirArrayKeys(self.palabrasClaves) \
+        resumenpdf = "Resumen --" + self.resumen + "\nPalabras claves: " + Class_Paper.unirArrayKeys(self.palabrasClaves) \
                      + "\nAbstract --" + Class_Paper.unirArraySalto(
             self.abstract) + "\nKeyworks: " + Class_Paper.unirArrayKeys(self.keyWorks)
 
@@ -51,7 +50,7 @@ class Paper_Apa(Class_Paper.Paper):
         cuerpopdf = "2.     Cuerpo\n" + Class_Paper.unirArraySalto(self.cuerpo)
         recomendaciones = "3.       Recomendaciones\n" + Class_Paper.unirArraySalto(self.recomendaciones)
         conclusiones = "4.      Conclusiones\n" + Class_Paper.unirArraySalto(self.conclusiones)
-        referencias = "5.       Referencias\n" + Class_Paper.unirArraySalto(self.referencias)
+        referencias = "5.       Referencias\n" + Class_Paper.unirArraySalto(self.refencias)
 
         crearPaginas.paperApa(nombrePaper,titulo,primeraPagina,resumenpdf,intro,cuerpopdf,recomendaciones,conclusiones,referencias)
 
