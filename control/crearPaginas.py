@@ -117,10 +117,13 @@ def paperIee(nombreDocumento,resumenpdf,TotalAuto,lugar,mail,intro,cuerpopdf,rec
     doc.multiBuild(mipaper)
 
 
-def paperApa(nombreDocumento,titulo,primerapagina,resumenpdf,intro,cuerpopdf,recomendaciones,conclusiones,referencias):
+def paperApa(nombreDocumento,titulo,autores,autoresC,lugar,mail,resumenpdf,intro,cuerpopdf,recomendaciones,conclusiones,referencias):
     miPaperApa = []
     miPaperApa.append(Paragraph(titulo,h3))
-    miPaperApa.append(Paragraph(primerapagina,h5))
+    miPaperApa.append(Paragraph(autores,h5))
+    miPaperApa.append(Paragraph(autoresC, h5))
+    miPaperApa.append(Paragraph(lugar, h5))
+    miPaperApa.append(Paragraph(mail, h5))
     miPaperApa.append(PageBreak())
     miPaperApa.append(toc)
     miPaperApa.append(PageBreak())

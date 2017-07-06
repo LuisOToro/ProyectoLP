@@ -17,7 +17,6 @@ class paperDirector:
         self.tipoPaper = tipo
         if tipo == 1:
             self.paper = Class_Paper_Apa.Paper_Apa(titulo,pais,ciudad)
-            print(self.paper.titulo)
         elif tipo == 2:
             self.paper = Class_Paper_Ieee.Paper_Ieee(titulo,pais,ciudad)
         else:

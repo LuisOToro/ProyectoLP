@@ -48,7 +48,8 @@ class Paper_Ieee(Class_Paper.Paper):
         recomendaciones = "3.       Recomendaciones\n" + Class_Paper.unirArraySalto(self.recomendaciones)
         conclusiones = "4.      Conclusiones\n" + Class_Paper.unirArraySalto(self.conclusiones)
         referencias = "5.       Referencias\n" + Class_Paper.unirArraySalto(self.referencias)
-        crearPaginas.paperIee(nombrepdf,resumenpdf,TotalAuto,lugar,mail,intro,cuerpopdf,recomendaciones,conclusiones,referencias,titulo)
+        name_EXt = nombrepdf+".pdf"
+        crearPaginas.paperIee(name_EXt,resumenpdf,TotalAuto,lugar,mail,intro,cuerpopdf,recomendaciones,conclusiones,referencias,titulo)
 
 
 

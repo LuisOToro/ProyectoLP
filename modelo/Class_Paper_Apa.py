@@ -29,7 +29,6 @@ class Paper_Apa(Class_Paper.Paper):
         self.refencias.append(salida)
 
     def addReferenciaConference(self, Bibtex_conference,pais):
-        print(Bibtex_conference.mes)
         salida = Bibtex_conference.autor+". ("+meses[Bibtex_conference.mes]+", "+str(Bibtex_conference.anio)+"). "+Bibtex_conference.titulo+". "+Bibtex_conference.organizacion+". "+Bibtex_conference.nameConference+". Congreso llevado a cabo en "+Bibtex_conference.organizacion+", "+pais
         self.refencias.append(salida)
 
@@ -41,8 +40,8 @@ class Paper_Apa(Class_Paper.Paper):
         autores = Class_Paper.unirArrayKeys(self.autores)
         autoresC = Class_Paper.unirArraySalto(self.aoutCorpo)
         TotalAuto = autores + "\n" + autoresC
-        lugar = self.ciudad + " " + self.pais
-        mail = lugar + "\n" + self.correo
+        lugar = self.ciudad + ", " + self.pais
+        mail = self.correo
 
         primeraPagina = "\n" + TotalAuto + "\n" + mail
 
@@ -52,7 +51,9 @@ class Paper_Apa(Class_Paper.Paper):
         conclusiones = "4.      Conclusiones\n" + Class_Paper.unirArraySalto(self.conclusiones)
         referencias = "5.       Referencias\n" + Class_Paper.unirArraySalto(self.refencias)
 
-        crearPaginas.paperApa(nombrePaper,titulo,primeraPagina,resumenpdf,intro,cuerpopdf,recomendaciones,conclusiones,referencias)
+        name_EXt = nombrePaper + ".pdf"
+
+        crearPaginas.paperApa(name_EXt,titulo,autores,autoresC,lugar,mail,resumenpdf,intro,cuerpopdf,recomendaciones,conclusiones,referencias)
 
 
 
