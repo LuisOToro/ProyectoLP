@@ -1,20 +1,22 @@
-from control import creadorPDF
+from control import crearPaginas
 from modelo import Class_Paper
+import re
 mes = {1: "Ene.",2: "Feb.",3 : "Mar.",4: "Abr.",5: "May.", 6: "Jun.", 7: "Jul.", 8: "Ago.",9: "Sept.", 10: "Oct.", 11: "Nov.", 12: "Dic."}
 
 class Paper_Ieee(Class_Paper.Paper):
 
 
-    def __init__(self,title,pais,ciudad,correo):
-        Class_Paper.Paper(title, pais, ciudad, correo)
+    def __init__(self,title,pais,ciudad):
+        Class_Paper.Paper(title, pais, ciudad)
         self.referencias = []
+
 
     def addReferenciaArticle(self,bibtex_Article):
         salida = bibtex_Article.autor + ", "+ "\" "+ bibtex_Article.titulo+",\" "+bibtex_Article.journal+ ", vol. "+str(bibtex_Article.volumen)+", pp. "+bibtex_Article.pagina+", "+str(bibtex_Article.mes)+", "+str(bibtex_Article.anio)
         self.referencias.append(salida)
 
 
-    def addReferenciaBook(self,ciudad,estado,pais,paginas,bibTex_Book):
+    def addReferenciaBook_Ieee(self,ciudad,estado,pais,paginas,bibTex_Book):
         salida = bibTex_Book.autor+", \""+bibTex_Book.publisher+",\" "+bibTex_Book.titulo+", "+str(bibTex_Book.edicion)+" ed., vol. "+str(bibTex_Book.volumen)+", "+ciudad+", "+estado+", "+pais+", "+str(bibTex_Book.anio)+"pp. "+str(paginas)+"."
         self.referencias.append(salida)
 
@@ -28,11 +30,12 @@ class Paper_Ieee(Class_Paper.Paper):
         self.referencias.append(salida)
 
 
-    def addReferenciaConference(self,Bibtext_conference, ciudad, estado,pais):
+    def addReferenciaConference(self,Bibtext_conference,ciudad,estado,pais):
         salida = Bibtext_conference.autor+", \" "+Bibtext_conference.titulo +",\" "+ciudad+", "+estado+", "+pais+", "+str(Bibtext_conference.anio)
         self.referencias.append(salida)
 
-    def crearPdf(self,idPaper,nombrePaper):
+
+    def crearPdf(self,nombrepdf,titulo):
         resumenpdf = "Resumen --"+Class_Paper.unirArraySalto(self.resumen) + "\nPalabras claves: " + Class_Paper.unirArrayKeys(self.palabrasClaves)\
                      + "\nAbstract --" + Class_Paper.unirArraySalto(self.abstract) + "\nKeyworks: " + Class_Paper.unirArrayKeys(self.keyWorks)
         autores = Class_Paper.unirArrayKeys(self.autores)
@@ -45,5 +48,7 @@ class Paper_Ieee(Class_Paper.Paper):
         recomendaciones = "3.       Recomendaciones\n" + Class_Paper.unirArraySalto(self.recomendaciones)
         conclusiones = "4.      Conclusiones\n" + Class_Paper.unirArraySalto(self.conclusiones)
         referencias = "5.       Referencias\n" + Class_Paper.unirArraySalto(self.referencias)
-        texto = resumenpdf + "\n" +intro + "\n" + cuerpopdf + "\n" + recomendaciones + "\n" + conclusiones + "\n" + referencias
-        creadorPDF.Generar(idPaper,self.titulo,texto,mail,TotalAuto,nombrePaper)
+        crearPaginas.paperIee(nombrepdf,resumenpdf,TotalAuto,lugar,mail,intro,cuerpopdf,recomendaciones,conclusiones,referencias,titulo)
+
+
+

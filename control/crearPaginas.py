@@ -20,12 +20,18 @@ class MyDocTemplate(BaseDocTemplate):
             self.notify('TOCEntry', (0, text, self.page))
         if style == 'Heading2':
             self.notify('TOCEntry', (1, text, self.page))
+
+
 h1 = PS(name = 'Heading1',
  fontSize = 14,
  leading = 16)
 h2 = PS(name = 'Heading2',
     fontSize = 12,
     leading = 14)
+
+h3 = PS(name = 'titulo',fontSize = 20,leading = 22)
+h4 = PS(name = 'sub1', fontSize = 10,leading = 12)
+h5 = PS(name = 'primeraPagina', fontSize = 16, leading = 18)
 # Build story.
 story = []
 toc = TableOfContents()
@@ -82,3 +88,61 @@ story.append(Paragraph('Text in second sub heading', PS('body')))
 story.append(Paragraph('Last heading', h1))
 doc = MyDocTemplate('mintoc.pdf')
 doc.multiBuild(story)
+
+def paperIee(nombreDocumento,resumenpdf,TotalAuto,lugar,mail,intro,cuerpopdf,recomendaciones,conclusiones,referencias,titulo):
+    mipaper = []
+    mipaper.append(Paragraph(titulo,h3))
+    mipaper.append(Paragraph("\n",h3))
+    mipaper.append(Paragraph(TotalAuto,h4))
+    mipaper.append(Paragraph("\n", h4))
+    mipaper.append(Paragraph(mail, h4))
+    mipaper.append(Paragraph("\n", h4))
+    mipaper.append(Paragraph(lugar, h4))
+    mipaper.append(Paragraph("\n", PS('body')))
+    mipaper.append(Paragraph("Abstract",h1))
+    mipaper.append(Paragraph(resumenpdf, PS('body')))
+    mipaper.append(PageBreak())
+    mipaper.append(Paragraph("Introduccion",h1))
+    mipaper.append(Paragraph(intro, PS('body')))
+    mipaper.append(PageBreak())
+    mipaper.append(Paragraph("Estado del arte", h1))
+    mipaper.append(Paragraph(cuerpopdf, PS('body')))
+    mipaper.append(Paragraph("Recomendaciones", h1))
+    mipaper.append(Paragraph(recomendaciones, PS('body')))
+    mipaper.append(Paragraph("Conclusiones", h1))
+    mipaper.append(Paragraph(conclusiones, PS('body')))
+    mipaper.append(Paragraph("Referencias", h1))
+    mipaper.append(Paragraph(referencias, PS('body')))
+    doc = MyDocTemplate(nombreDocumento)
+    doc.multiBuild(mipaper)
+
+
+def paperApa(nombreDocumento,titulo,primerapagina,resumenpdf,intro,cuerpopdf,recomendaciones,conclusiones,referencias):
+    miPaperApa = []
+    miPaperApa.append(Paragraph(titulo,h3))
+    miPaperApa.append(Paragraph(primerapagina,h5))
+    miPaperApa.append(PageBreak())
+    miPaperApa.append(toc)
+    miPaperApa.append(PageBreak())
+    miPaperApa.append(Paragraph("Abstract(Resumen).", h1))
+    miPaperApa.append(Paragraph(resumenpdf, PS('body')))
+    miPaperApa.append(PageBreak())
+    miPaperApa.append(Paragraph("Introduccion", h1))
+    miPaperApa.append(Paragraph(intro, PS('body')))
+    miPaperApa.append(PageBreak())
+    miPaperApa.append(Paragraph("Estado del arte", h1))
+    miPaperApa.append(Paragraph(cuerpopdf, PS('body')))
+    miPaperApa.append(Paragraph("Recomendaciones", h1))
+    miPaperApa.append(Paragraph(recomendaciones, PS('body')))
+    miPaperApa.append(Paragraph("Conclusiones", h1))
+    miPaperApa.append(Paragraph(conclusiones, PS('body')))
+    miPaperApa.append(Paragraph("Referencias", h1))
+    miPaperApa.append(Paragraph(referencias, PS('body')))
+    doc = MyDocTemplate(nombreDocumento)
+    doc.multiBuild(miPaperApa)
+
+
+
+
+
+

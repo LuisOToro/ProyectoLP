@@ -1,3 +1,4 @@
+import re
 def unirArray(lista):
     salida2 = ""
     for i in range(len(lista)):
@@ -17,34 +18,33 @@ def unirArrayKeys(lista):
     return salida4
 
 class Paper:
-    titulo = ""
-    autores = []
-    aoutCorpo = []
-    pais = ""
-    ciudad = ""
-    correo = ""
-    resumen = ""
-    abstract = []
-    introduccion = []
-    palabrasClaves =[]
-    keyWorks = []
-    cuerpo = []
-    subtitulo = ""
-    recomendaciones = []
-    conclusiones = []
 
-
-
-
-    def __init__(self,title,pais,ciudad,correo):
+    def __init__(self,title,pais,ciudad):
         self.titulo = title
         self.pais = pais
         self.ciudad = ciudad
-        self.correo = correo
+        self.autores = []
+        self.aoutCorpo = []
+        self.resumen = ""
+        self.abstract = []
+        self.introduccion = []
+        self.palabrasClaves = []
+        self.keyWorks = []
+        self.cuerpo = []
+        self.subtitulo = ""
+        self.recomendaciones = []
+        self.conclusiones = []
+        self.correo = ""
 
 
     def addAutor(self,autor):
         self.autores.append(autor)
+
+    def addMail(self,mail):
+        if ( re.match('^[a-zA-Z]([0-9a-zA-Z\-\_]+)\@([a-z\-]+)\.([a-z]{2,3})((\.[a-z]+)?)+$',mail)) != None:
+           self.correo = mail
+        else:
+            print("correo invalido ingrese un correo valido")
 
     def addAutorCorporativo(self,autorc):
         self.aoutCorpo.append(autorc)
@@ -75,4 +75,5 @@ class Paper:
 
     def addRecomendaciones(self,texto):
         self.recomendaciones.append(texto)
+
 

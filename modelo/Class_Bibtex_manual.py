@@ -98,11 +98,12 @@ class A_sintactico_manual:
         elif p[2] == '/':
             p[0] = p[1] / p[3]
 
-    def p_error(p):
+    def p_error(self,p):
         print("\nERROR DE COMPILACION\n")
 
     def parse(self, data, **kwargs):
         self.parser.parse(data, **kwargs)
+
 
 
     def build(self, **kwargs):

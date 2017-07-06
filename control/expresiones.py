@@ -34,17 +34,13 @@ apa_page = '(pp. )(([0-9]+)(-)([0-9]+)|[0-9]+)[.]'
 apa_volume = '([0-9]+)( )[\(][0-9]+[\)]'
 apa_website='[(http://)|(https://)](www.)[[a-z\.]+[\/]?]+'
 apaLibro=apa_author+exp_coma+apa_inicial+exp_coma+apa_year+exp_coma+apa_title+exp_coma+apa_cityCo+apa_editorial
-<<<<<<< HEAD
+apa_country = ''
+
 apaPaginaWeb=apa_author+'(. )'+apa_year+'(. )'+apa_title+'(. )'+apa_cityCo+'( Recuperado de: )'+apa_website
 apaConferencia=apa_author+exp_coma+apa_inicial+apa_year+apa_title+exp_coma+apa_presidenteConferencia+apa_tituloConferencia+'((Simposio llevado a cabo en )|(Conferencia llevado a cabo en ))'+exp_coma+apa_cityCo
 apaArticulo= '['+apa_author+exp_coma+apa_inicial+exp_coma+']*'+'(y )?'+apa_author+exp_coma+apa_inicial+exp_coma+apa_year+apa_title+apa_nombreRevista+exp_coma+apa_volume+exp_coma+apa_page
-apaInforme=apa_author+exp_coma+'['+apa_inicial+'( )'+']*'+apa_year+'(. )'+apa_title+'(. )'+apa_country+'(. )'+'( Recuperado de: )'+apa_website
-=======
-#apaManual=
-apaConferencia=apa_author+exp_coma+apa_inicial+apa_year+apa_title+exp_coma+apa_presidenteConferencia+apa_tituloConferencia+'((Simposio llevado a cabo en )|(Conferencia llevado a cabo en ))'+exp_coma+apa_cityCo
-apaArticulo= '['+apa_author+exp_coma+apa_inicial+exp_coma+']*'+'(y )?'+apa_author+exp_coma+apa_inicial+exp_coma+apa_year+apa_title+apa_nombreRevista+exp_coma+apa_volume+exp_coma+apa_page
-#apaPublicacion=
->>>>>>> origin/master
+apaInforme=apa_author+exp_coma+'['+apa_inicial+'( )'+']*'+apa_year+'(. )'+apa_title+'(. )'+apa_cityCo+'(. )'+'( Recuperado de: )'+apa_website
+
 #Ejemplo conferencia
 #Rojas, C., & Vera, N. (Agosto de 2013). ABMS (Automatic BLAST for Massive Sequencing). En H. Castillo (Presidencia), 2° Congreso Colombiano de Biologia Computacional y Bioinformática CCBCOL. Congreso llevado a cabo en Manizales, Colombia.
 #Ejemplo libro
@@ -55,3 +51,6 @@ apaArticulo= '['+apa_author+exp_coma+apa_inicial+exp_coma+']*'+'(y )?'+apa_autho
 #Argosy Medical Animation. (2007-2009). Visible body: Discover human anatomy. New York, EU.: Argosy Publishing. Recuperado de http://www.visiblebody.com
 #Ejemplo informe
 #Departamento Administrativo Nacional de Estadisticas. (2012). Tecnologías de la información y las comunicaciones. Recuperado de: http://www.dane.gov.co
+
+texto = ''
+re.match(apaPaginaWeb,texto)
