@@ -1,14 +1,4 @@
 class Bibtex_Article:
-    autor = ""
-    titulo = ""
-    journal = ""
-    anio = 0
-    numero = 0
-    pagina = ""
-    mes = 0
-    nota = ""
-    volumen = 0
-    nombreArticulo = ""
 
     def __init__(self,nombreA,autor,titulo,journal,anio,numero,pagina,mes,nota,volumen):
         self.autor = autor
@@ -24,18 +14,6 @@ class Bibtex_Article:
 
 
 class Bibtex_Book:
-    nameBook = ""
-    autor = ""
-    titulo = ""
-    publisher = ""
-    anio = 0
-    volumen = 0
-    series = 0
-    direccion = ""
-    edicion = 0
-    mes = 0
-    nota = ""
-    isbn = 0
 
     def __init__(self,nameLibro,autor,titulo,publisher,anio,volumen,series,direccion,edicion,mes,nota,isbn):
         self.nameBook = nameLibro
@@ -53,21 +31,6 @@ class Bibtex_Book:
 
 
 class Bibtex_Conference:
-
-    nameConference = ""
-    autor = ""
-    titulo = ""
-    booktitle =""
-    anio = 0
-    editor = ""
-    volumen = 0
-    series = 0
-    paginas = 0
-    direccion = ""
-    mes = 0
-    organizacion = ""
-    publisher = ""
-    nota = ""
 
     def __init__(self,nombreConf,autor,titulo,bookTitle,anio,editor,volumen,series,paginas,direccion,mes,organizacion,publisher,nota):
         self.nameConference = nombreConf
@@ -87,23 +50,6 @@ class Bibtex_Conference:
 
 
 class Bibtex_Manual:
-    """title        = {The title of the work},
-  author       = {Peter Gainsford},
-  organization = {The organization},
-  address      = {The address of the publisher},
-  edition      = 3,
-  month        = 7,
-  year         = 1993,
-  note  """
-    titulo = ""
-    autor =  ""
-    organizacion = ""
-    direccion = ""
-    nombre = ""
-    edicion = 0
-    mes = 0
-    anio = 0
-    nota = ""
 
     def __init__(self,titulo,autor,organizacion,direccion,edicion,mes,anio,nota,nombre):
         self.titulo = titulo
@@ -118,12 +64,6 @@ class Bibtex_Manual:
 
 
 class Bibtex_Publicacion:
-    nombre = ""
-    autor = ""
-    titulo = ""
-    nota = ""
-    mes = 0
-    anio = 0
 
     def __init__(self,nombre,autor,titulo,nota,mes,anio):
         self.nombre = nombre

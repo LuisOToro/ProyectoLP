@@ -33,10 +33,10 @@ apa_nombreRevista= '[a-zA-Z\t]+[\.]?'
 apa_page = '(pp. )(([0-9]+)(-)([0-9]+)|[0-9]+)[.]'
 apa_volume = '([0-9]+)( )[\(][0-9]+[\)]'
 apaLibro=apa_author+exp_coma+apa_inicial+exp_coma+apa_year+exp_coma+apa_title+exp_coma+apa_cityCo+apa_editorial
-apaManual=
+#apaManual=
 apaConferencia=apa_author+exp_coma+apa_inicial+apa_year+apa_title+exp_coma+apa_presidenteConferencia+apa_tituloConferencia+'((Simposio llevado a cabo en )|(Conferencia llevado a cabo en ))'+exp_coma+apa_cityCo
 apaArticulo= '['+apa_author+exp_coma+apa_inicial+exp_coma+']*'+'(y )?'+apa_author+exp_coma+apa_inicial+exp_coma+apa_year+apa_title+apa_nombreRevista+exp_coma+apa_volume+exp_coma+apa_page
-apaPublicacion=
+#apaPublicacion=
 #Ejemplo conferencia
 #Rojas, C., & Vera, N. (Agosto de 2013). ABMS (Automatic BLAST for Massive Sequencing). En H. Castillo (Presidencia), 2° Congreso Colombiano de Biologia Computacional y Bioinformática CCBCOL. Congreso llevado a cabo en Manizales, Colombia.
 #Ejemplo libro

@@ -22,7 +22,8 @@ lexer.build()
 lexer.tokenize(text)
 lexer.print_tokens(True)
 
-
+print(0)
+print(str(0))
 sintac.parse(text,debug=0)
 if sintac.bandera == 0:
     print(0)
