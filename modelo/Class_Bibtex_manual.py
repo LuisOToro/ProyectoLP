@@ -1,4 +1,5 @@
 import ply.yacc as yacc
+from modelo import Class_bibtext
 
 
 class A_sintactico_manual:
@@ -11,6 +12,7 @@ class A_sintactico_manual:
     def __init__(self,tokens):
         self.tokens = tokens
         self.names = {}
+        self.bandera = 0
 
     def p_statement_reservadas(self,p):
         '''statement : titulo
@@ -74,7 +76,13 @@ class A_sintactico_manual:
 
     def p_estructura(self,p):
         '''manual : ARROBA MANUAL LLLAVE STRING COMMA titulo COMMA autor COMMA organization COMMA direccion COMMA edition COMMA mes COMMA anio COMMA nota RLLAVE'''
-        print("si vale la estructura")
+        listTmp = p[4]
+        lista = list(self.names.values())
+        self.bandera = 1
+        self.manual = Class_bibtext.Bibtex_Manual(listTmp,lista[0],lista[1],lista[2],lista[3],lista[4],lista[5],
+                                                  lista[6],lista[7])
+
+
 
     def p_expression_binop(self,p):
         '''expression : expression PLUS expression

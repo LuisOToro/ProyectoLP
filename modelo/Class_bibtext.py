@@ -10,7 +10,7 @@ class Bibtex_Article:
     volumen = 0
     nombreArticulo = ""
 
-    def __init__(self,autor,titulo,journal,anio,numero,pagina,mes,nota,volumen,nombreA):
+    def __init__(self,nombreA,autor,titulo,journal,anio,numero,pagina,mes,nota,volumen):
         self.autor = autor
         self.titulo = titulo
         self.journal = journal

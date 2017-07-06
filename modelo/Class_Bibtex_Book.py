@@ -1,4 +1,5 @@
 import ply.yacc as yacc
+from modelo import Class_bibtext
 
 
 class A_sintactico_book:
@@ -11,6 +12,9 @@ class A_sintactico_book:
     def __init__(self,tokens):
         self.tokens = tokens
         self.names = {}
+        self.bandera = 0
+
+
 
     def p_statement_bloque(self,p):
         'statement : STRING'
@@ -89,7 +93,11 @@ class A_sintactico_book:
 
     def p_estructura(self,p):
         '''book : ARROBA BOOK LLLAVE STRING COMMA autor COMMA titulo COMMA publicado COMMA anio COMMA volumen COMMA series COMMA direccion COMMA edition COMMA mes COMMA nota COMMA isbn RLLAVE'''
-        print("si vale la estructura soy un libro")
+        listTmp = p[4]
+        lista = list(self.names.values())
+        self.book = Class_bibtext.Bibtex_Book(listTmp,lista[0],lista[1],lista[2],lista[3],lista[4],lista[5],lista[6],lista[7],lista[8],
+                                              lista[9],lista[10])
+        self.bandera = 1
 
     def p_expression_binop(self,p):
         '''expression : expression PLUS expression

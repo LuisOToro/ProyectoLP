@@ -1,3 +1,20 @@
+def unirArray(lista):
+    salida2 = ""
+    for i in range(len(lista)):
+        salida2 = salida2 + lista[i]
+    return salida2
+
+def unirArraySalto(lista):
+    salida3 = ""
+    for i in range(len(lista)):
+        salida3 = salida3 + "\n" +lista[i]
+    return salida3
+
+def unirArrayKeys(lista):
+    salida4 = ""
+    for i in range(len(lista)):
+        salida4 = salida4 + ", " +lista[i]
+    return salida4
 
 class Paper:
     titulo = ""
@@ -7,7 +24,7 @@ class Paper:
     ciudad = ""
     correo = ""
     resumen = ""
-    abstract = ""
+    abstract = []
     introduccion = []
     palabrasClaves =[]
     keyWorks = []
@@ -16,41 +33,46 @@ class Paper:
     recomendaciones = []
     conclusiones = []
 
+
+
+
     def __init__(self,title,pais,ciudad,correo):
         self.titulo = title
         self.pais = pais
         self.ciudad = ciudad
         self.correo = correo
 
+
     def addAutor(self,autor):
         self.autores.append(autor)
 
     def addAutorCorporativo(self,autorc):
-        pass
+        self.aoutCorpo.append(autorc)
 
     def addResumen(self,resumen):
-        pass
+        self.resumen = resumen
 
     def addAbstract (self,abstrac):
-        pass
+        self.abstract.append(abstrac)
 
     def addIntro(self,intro):
-        pass
+        self.introduccion.append(intro)
 
     def addPalabraClaves(self,palabras):
-        pass
+        self.palabrasClaves.append(palabras)
 
     def addKeyWorks(self,palabras):
-        pass
+        self.keyWorks.append(palabras)
 
     def addCuerpo(self,cuerpo):
-        pass
+        self.cuerpo.append(cuerpo)
 
     def addSubtitulo(self,subtitulo):
-        pass
+        self.subtitulo = subtitulo
 
     def addConclusiones(self,texto):
-        pass
+        self.conclusiones.append(texto)
 
     def addRecomendaciones(self,texto):
-        pass
+        self.recomendaciones.append(texto)
+

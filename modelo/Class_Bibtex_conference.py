@@ -1,4 +1,5 @@
 import ply.yacc as yacc
+from modelo import Class_bibtext
 
 
 class A_sintactico_conference:
@@ -11,6 +12,8 @@ class A_sintactico_conference:
     def __init__(self,tokens):
         self.tokens = tokens
         self.names = {}
+        self.bandera = 0
+
 
     def p_statement_reservadas(self,p):
         '''statement : titulo
@@ -100,7 +103,13 @@ class A_sintactico_conference:
 
     def p_estructura(self,p):
         '''conference : ARROBA CONFERENCE LLLAVE STRING COMMA autor COMMA titulo COMMA bookTitle COMMA anio COMMA editor COMMA volumen COMMA series COMMA pagina COMMA direccion COMMA mes COMMA organization COMMA publicado COMMA nota RLLAVE'''
-        print("si vale la estructura soy una conferencia lalala")
+        listTmp = p[4]
+        lista = list(self.names.values())
+        self.bandera = 1
+        self.conference = Class_bibtext.Bibtex_Conference(listTmp,lista[0],lista[1],lista[2],lista[3],lista[4],lista[5],
+                                                          lista[6],lista[7],lista[8],lista[9],lista[10],lista[11],lista[12])
+
+
 
     def p_expression_binop(self,p):
         '''expression : expression PLUS expression
@@ -121,6 +130,7 @@ class A_sintactico_conference:
 
     def parse(self, data, **kwargs):
         self.parser.parse(data, **kwargs)
+
 
 
     def build(self, **kwargs):

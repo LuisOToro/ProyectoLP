@@ -1,5 +1,4 @@
-from modelo import Class_Bibtex_Article, Class_Bibtex_Book,Class_Bibtx_conference
-from modelo import Class_Tokens
+from modelo import Class_Bibtex_Book,Class_Tokens,Class_Bibtex_conference
 
 reservadas = {"articulo": "ARTICULO", "autor": "AUTOR", "titulo": "TITLE", "anio": "YEAR", "paginas": "PAGE",
                       "notas": "NOTE", "volumen": "VOLUMEN", "journal": "JOURNAL", "numero": "NUMERO",
@@ -17,10 +16,17 @@ text = "@conference{mis conference,  author       = {Peter Draper},   title     
 
 lexer = Class_Tokens.AnalizadorLexico(tokens,reservadas)
 
-sintac = Class_Bibtx_conference.A_sintactico_conference(tokens)
+sintac = Class_Bibtex_conference.A_sintactico_conference(tokens)
 sintac.build()
 lexer.build()
 lexer.tokenize(text)
 lexer.print_tokens(True)
 
+
 sintac.parse(text,debug=0)
+if sintac.bandera == 0:
+    print(0)
+elif sintac.bandera == 1:
+    print(255)
+    print(sintac.conference.anio)
+
