@@ -50,7 +50,8 @@ class A_sintactico_article:
 
     def p_statement_paginas_assign(self,p):
         'pagina : PAGE EQUALS LLLAVE NUMBER MINUS NUMBER RLLAVE'
-        self.names[p[1]] = p[4]
+        self.names[p[1]] = str(p[4]) + " - " + str(p[6])
+
 
     def p_expression_number(self,p):
         'expression : NUMBER'
@@ -83,7 +84,7 @@ class A_sintactico_article:
         self.bandera = 1
         self.articulo = Class_bibtext.Bibtex_Article(listTmp,lista[0],lista[1],lista[2],lista[3],lista[4],lista[5],
                                                      lista[6],lista[7],lista[8])
-
+        #nombreA,autor,titulo,journal,anio,numero,pagina,mes,nota,volumen,
 
     def p_expression_binop(self,p):
         '''expression : expression PLUS expression
