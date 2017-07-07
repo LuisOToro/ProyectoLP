@@ -51,7 +51,7 @@ story = []
 toc = TableOfContents()
 # For conciseness we use the same styles for headings and TOC entries
 toc.levelStyles = [h1, h2]
-story.append(toc)
+"""story.append(toc)
 story.append(PageBreak())
 story.append(Paragraph('First heading', h1))
 story.append(Paragraph('Text in first heading', PS('body')))
@@ -103,7 +103,7 @@ story.append(Paragraph('Last heading', h1))
 story.append(PageBreak())
 story.append(Paragraph('Mi intento',h6))
 doc = MyDocTemplate('mintoc.pdf')
-doc.multiBuild(story)
+doc.multiBuild(story)"""
 
 def paperIee(nombreDocumento,resumenpdf,autores,autoresC,lugar,mail,intro,cuerpopdf,recomendaciones,conclusiones,referencias,titulo):
     mipaper = []
