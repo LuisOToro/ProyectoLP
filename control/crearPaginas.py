@@ -22,7 +22,7 @@ class MyDocTemplate(BaseDocTemplate):
             self.notify('TOCEntry', (0, text, self.page))
         if style == 'Heading2':
             self.notify('TOCEntry', (1, text, self.page))
-
+#Fuente: https://www.reportlab.com/docs/reportlab-userguide.pdf pag 28 para cursiva, pagina 72 para centralizar
 
 h1 = PS(name = 'Heading1',
  fontSize = 14,
