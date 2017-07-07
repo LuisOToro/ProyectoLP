@@ -13,11 +13,25 @@ texto4 = "@manual{mi manual,  title        = {The title of the work},  author   
 
 texto5 = "@unpublished{mi unpublished,  author       = {Peter Marcheford},   title        = {The title of the work},  note         = {An optional note},  month        = 7,  year         = 1993}"
 
+r1 = "Coruminas, M., Ronecro, C., Bruguca, E. (2007). Sistema dopaminergico y adicciones, Rev Mukuel, 44(1), 23-31."
+r2 = "Argosy Medical Animation. (2007-2009). Visible body: Discover human anatomy. New York, EU.: Argosy Publishing. Recuperado de http://www.visiblebody.com"
+r3 = "Hacyan, S., (2004), Fisica y metafisica en el espacio y el tiempo. La filosofia en el laboratorio, Mexico DF, Mexico: Fondo nacional de cultura economica."
+r4 = "Rojas, C.(Agosto de 2013). ABMS (Automatic BLAST for Massive Sequencing). En H. Castillo (Presidencia), 2do Congreso Colombiano de Biologia Computacional y Bioinformatica CCBCOL. Congreso llevado a cabo en Manizales, Colombia."
+r5 = "Departamento Administrativo Nacional de Estadisticas. (2012). Tecnologias de la informacion y las comunicaciones. Recuperado de: http://www.dane.gov.co"
+
+
 paperApa.iniciarBibtex_compiler_add_referencias(5,texto5)
 paperApa.iniciarBibtex_compiler_add_referencias(4,texto4)
 paperApa.iniciarBibtex_compiler_add_referencias(3,texto2)
 paperApa.iniciarBibtex_compiler_add_referencias(2,texto3)
 paperApa.iniciarBibtex_compiler_add_referencias(1,texto)
+
+paperApa.iniciarRegulares_add_referencias_Apa(1,r1)
+paperApa.iniciarRegulares_add_referencias_Apa(5,r2)
+paperApa.iniciarRegulares_add_referencias_Apa(4,r3)
+paperApa.iniciarRegulares_add_referencias_Apa(3,r4)
+paperApa.iniciarRegulares_add_referencias_Apa(2,r5)
+
 
 paperApa.paper.addIntro("Actualmente estamos viviendo una gran revolución de la información sin darnos cuenta y sin conocer totalmente la tecnología que nos rodea. Nuevos cambios hacen que tengamos que actualizarnos constantemente en conocimientos relacionados con las nuevas tecnologías")
 paperApa.paper.addPalabraClaves("tecnologia")

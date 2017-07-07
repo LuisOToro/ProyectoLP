@@ -34,12 +34,12 @@ apa_page = '(pp. )?(([0-9]+)(-)([0-9]+)|[0-9]+)[.]'
 apa_volume = '[0-9]+( )[\(][0-9]+[\)]'
 apa_website='((http://)|(https://))(www.)[[a-z\.]+[\/]?]+'#((http:\/\/)|(https:\/\/))(www.)[[a-z\.]+[\/]?]+
 apaLibro=apa_author+exp_coma+apa_inicial+exp_coma+apa_year+exp_coma+apa_title+exp_coma+apa_cityCo+apa_editorial
-apaPaginaWeb=apa_author+'(. )'+apa_year+'(. )'+apa_title+'(. )'+apa_cityCo+apa_nombreRevista+'[( Recuperado de: )]+'+apa_website
+#apaPaginaWeb=apa_author+'(. )'+apa_year+'(. )'+apa_title+'(. )'+apa_cityCo+apa_nombreRevista+'[( Recuperado de: )]+'+apa_website
 apaConferencia=apa_author+exp_coma+apa_inicial+apa_year+apa_title+apa_presidenteConferencia+exp_coma+apa_tituloConferencia+'(. )'+'((Simposio llevado a cabo en )|(Conferencia llevado a cabo en )|(Congreso llevado a cabo en))'+exp_coma+apa_cityCo
 apaArticulo= '['+apa_author+exp_coma+apa_inicial+exp_coma+']*'+'(y )?'+apa_author+exp_coma+apa_inicial+exp_coma+apa_year+apa_title+exp_coma+apa_nombreRevista+'(,)[ ]'+apa_volume+'(,)[ ]'+apa_page
 apaInforme=apa_author+exp_coma+'['+apa_inicial+'( )'+']*'+'(. )'+apa_year+'(. )'+apa_title+'(. )'+apa_cityCo+'(. )?'+'( Recuperado de: )'+apa_website
 #apaLibro = ''
-#apaPaginaWeb = '[a-zA-Z\ ]+(. )([\(][0-9]+[\)]|[\(][a-zA-Z0-9\ ]+[\)]|[\(]([0-9]+(-)[0-9]+)[\)])[\.]?[ ]?([a-zA-Z\ ]+[\.]|[[a-zA-Z\ ]+(:)[a-zA-Z\ ]+]+)([\(]([a-zA-Z\ ]+)[\)](. ))?(. )([a-zA-Z\ ]+[(,)[ ]+]?[a-zA-Z\ ]+[\.]?[\:]?[[a-zA-Z\ ]+]?)?[a-zA-Z\ ]+[\.]?[( Recuperado de: )]+((http:\/\/)|(https:\/\/))(www.)[[a-z\.]+[\/]?]+'
+apaPaginaWeb = '[a-zA-Z\ ]+(. )([\(][0-9]+[\)]|[\(][a-zA-Z0-9\ ]+[\)]|[\(]([0-9]+(-)[0-9]+)[\)])[\.]?[ ]?([a-zA-Z\ ]+[\.]|[[a-zA-Z\ ]+(:)[a-zA-Z\ ]+]+)([\(]([a-zA-Z\ ]+)[\)](. ))?(. )([a-zA-Z\ ]+[(,)[ ]+]?[a-zA-Z\ ]+[\.]?[\:]?[[a-zA-Z\ ]+]?)?[a-zA-Z\ ]+[\.]?[( Recuperado de: )]+((http:\/\/)|(https:\/\/))(www.)[[a-z\.]+[\/]?]+'
 #apaConferencia = '[a-zA-Z\ ]+(,)[ ]+[A-Z](.)[ ]?([\(][0-9]+[\)]|[\(][a-zA-Z0-9\ ]+[\)]|[\(]([0-9]+(-)[0-9]+)[\)])[\.]?[ ]?([a-zA-Z\ ]+[\.]?|[a-zA-Z\t]+(:)[a-zA-Z\t]+)[(,)[ ]+]?[\(]([a-zA-Z\ ]+)[\)](. )(En )[A-Z](.)[ ]?[a-zA-Z\ ]+[\(](Presidencia)[\)][(,)[ ]+]?[a-zA-Z0-9\ °]+(. )((Simposio llevado a cabo en )|(Conferencia llevado a cabo en )|(Congreso llevado a cabo en))([a-zA-Z\ ]+[(,)[ ]+]?[a-zA-Z\ ]+[\.]?[\:]?[[a-zA-Z\t]+]?)?'
 #apaArticulo = '[[a-zA-Z\ ]+[(,)[ ]+]?[[A-Z](.)][(,)[ ]+]?]*(y )?[[a-zA-Z\ ]+[(,)[ ]+]?[A-Z](.)][(,)[ ]?]([\(][0-9]+[\)]|[\(][a-zA-Z0-9\ ]+[\)]|[\(]([0-9]+(-)[0-9]+)[\)])[\.]?([a-zA-Z\ ]+[\.]?|[a-zA-Z\t]+(:)[a-zA-Z\t]+)([a-zA-Z\ ]+[(,)[ ]+]?[a-zA-Z\t]+[\.]?[\:]?[[a-zA-Z\t]+]?)?[(,)[ ]+]?[a-zA-Z\ ]+[\.]?(,)[ ]+[0-9]+[\(][0-9]+[\)](,)[ ]+(pp. )?(([0-9]+)(-)([0-9]+)|[0-9]+)[.]'
 #apaInforme = '[a-zA-Z\ ]+[(,)[\ ]+]?[[A-Z](.)( )]*(. )([\(][0-9]+[\)]|[\(][a-zA-Z0-9\ ]+[\)]|[\(]([0-9]+(-)[0-9]+)[\)])[\.]?(. )([a-zA-Z\ ]+[\.]?|[a-zA-Z\t]+(:)[a-zA-Z\t]+)(. )([a-zA-Z\ ][(,)[\ ]+]?[a-zA-Z\t]+[\.]?[\:]?[[a-zA-Z\t]+]?)?(. )?( Recuperado de: )((http:\/\/)|(https:\/\/))(www.)[[a-z\.]+[\/]?]+'
@@ -53,9 +53,10 @@ apaInforme=apa_author+exp_coma+'['+apa_inicial+'( )'+']*'+'(. )'+apa_year+'(. )'
 #Argosy Medical Animation. (2007-2009). Visible body: Discover human anatomy. New York, EU.: Argosy Publishing. Recuperado de http://www.visiblebody.com
 #Ejemplo informe
 #Departamento Administrativo Nacional de Estadisticas. (2012). Tecnologias de la informacion y las comunicaciones. Recuperado de: http://www.dane.gov.co
-cadena = 'Hacyan, S., (2004), Fisica y metafisica en el espacio y el tiempo. La filosofia en el laboratorio, Mexico DF, Mexico: Fondo nacional de cultura economica.'
+cadena = "Hacyan, S., (2004), Fisica y metafisica en el espacio y el tiempo. La filosofia en el laboratorio, Mexico DF, Mexico: Fondo nacional de cultura economica."
 h = re.search(apaLibro,cadena)
 if h!= None:
     print("Funciona")
 else:
     print("Ya fue")
+

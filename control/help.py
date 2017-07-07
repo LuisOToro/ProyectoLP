@@ -67,4 +67,11 @@ def referencias_Bibtex_posibles():
 }
  """)
 
-referencias_Bibtex_posibles()
+def refencias_Apa_Expresiones_Regulares():
+    print("Referencias que se pueden validar en base a expresiones regulares")
+    print("\n<------Formato Apa------>\n")
+    print("Libro")
+    print("G. O. Young, \"Synthetic structure of industrial plastics,\" in Plastics, 2nd ed., vol. 3, J. Peters, Ed. New York, NY, USA: McGraw-Hill, 1964, pp. 15-64.")
+
+    print("\nJournal")
+
