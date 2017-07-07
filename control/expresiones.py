@@ -1,7 +1,7 @@
 import re
 #Book IEEE
 exp_pages = '(pp. )(([0-9]+)(-)([0-9]+)|[0-9]+)[.]'
-exp_author = '([A-Z][.][ ]+[a-zA-Z]+)'
+exp_author = '((([A-Z][.][ ]+)+[a-zA-Z]+)(, ))*(and )?([A-Z][.][ ]+)+[a-zA-Z]+'
 exp_coma = '[(,)[ ]+]?'
 exp_title = '(((")[a-zA-Z ]+(,")( in )([a-zA-Z ]+))?|([a-zA-Z ]+)|((")[a-zA-Z]+(")))'
 exp_year = '[0-9]+'
@@ -18,11 +18,19 @@ exp_articleNumber = '(Art. no. )[0-9]+'
 libro = exp_author+exp_coma+exp_title+exp_coma+exp_city+exp_coma+exp_state+exp_coma+exp_country+exp_year+exp_coma+exp_chapter+exp_coma+exp_section+exp_pages
 articulo = exp_author+exp_coma+exp_title+exp_coma+exp_volume+exp_coma+exp_number+exp_coma+exp_month+exp_year+exp_coma+exp_articleNumber
 manual = exp_author+exp_coma+exp_title+exp_coma+exp_city+exp_coma+exp_state+exp_coma+exp_country+exp_coma+exp_year
-conferencia = exp_author+exp_coma+exp_title+exp_coma+exp_city+exp_coma+exp_state+exp_coma+exp_country+exp_coma+exp_year
+conferencia = exp_author+exp_coma+exp_title+exp_coma+exp_city+exp_coma+exp_state+exp_coma+exp_country+exp_coma+exp_year+exp_coma+exp_pages
 noPublicado = exp_author+exp_coma+exp_title+'( unpublished.)?'
 #noPublicado = '([A-Z][.][ ]+[a-zA-Z]+)[(,)[ ]+]?(((")[a-zA-Z ]+(,")( in )([a-zA-Z ]+))?|([a-zA-Z ]+)|((")[a-zA-Z]+(")))( unpublished.)?'
 #Ejemplo noPublicado
 #B. Smith, "An approach to graphs of linear forms," unpublished.
+#Ejemplo conferencia
+#D. B. Payne and J. R. Stern, “Wavelength-switched pas- sively coupled single-mode optical network,” in Proc. IOOC-ECOC, Boston, MA, USA, 1985, pp. 585–590.
+#Ejemplo manual
+#[7]	J. H. Davis and J. R. Cogdell, “Calibration program for the 16-foot antenna,” Elect. Eng. Res. Lab., Univ. Texas, Austin, TX, USA, Tech. Memo. NGL-006-69-3, Nov. 15, 1987
+#Ejemplo articulo
+#J. S. Turner, “New directions in communications,” IEEE J. Sel. Areas Commun., vol. 13, no. 1, pp. 11-23, Jan. 1995.
+
+
 #APA
 apa_author= '[a-zA-Z\ ]+'
 apa_inicial= '[A-Z](.)[ ]?'
@@ -56,9 +64,11 @@ apaInforme=apa_author+exp_coma+'['+apa_inicial+'( )'+']*'+'(. )'+apa_year+'(. )'
 #Argosy Medical Animation. (2007-2009). Visible body: Discover human anatomy. New York, EU.: Argosy Publishing. Recuperado de http://www.visiblebody.com
 #Ejemplo informe
 #Departamento Administrativo Nacional de Estadisticas. (2012). Tecnologias de la informacion y las comunicaciones. Recuperado de: http://www.dane.gov.co
-cadena = 'B. Smith, "An approach to graphs of linear forms," unpublished.'
-h = re.search(noPublicado,cadena)
-if h!= None:
+cadena = 'D. B. Payne and J. R. Stern, "Wavelength-switched pas- sively coupled single-mode optical network," in Proc. IOOC-ECOC, Boston, MA, USA, 1985, pp. 585–590.'
+cadena2 = 'B. Smith, "An approach to graphs of linear forms," unpublished.'
+h = re.match(noPublicado,cadena2)
+h1 = re.match(conferencia,cadena)
+if h1!= None:
     print("Funciona")
 else:
     print("Ya fue")
