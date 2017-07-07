@@ -22,26 +22,29 @@ conferencia = exp_author+exp_coma+exp_title+exp_coma+exp_city+exp_coma+exp_state
 publicacion = exp_author+exp_coma+exp_title+exp_coma+exp_pages
 #APA
 apa_author= '[a-zA-Z\ ]+'
-apa_inicial= '[A-Z](.)'
-apa_presidenteConferencia='(En )'+apa_inicial+'( )'+apa_author+'( )[\(](Presidencia)[\)]'
-apa_tituloConferencia = '[a-zA-Z0-9\t]+'
-apa_year= '([\(][0-9]+[\)]|[\(][a-zA-Z0-9\ ]+[\)]|[\(]([0-9]+(-)[0-9]+)[\)])[\.]?'
-apa_title = '([a-zA-Z\ ]+[\.]?|[a-zA-Z\t]+(:)[a-zA-Z\t]+)'
-apa_cityCo= '([a-zA-Z\ ]+'+exp_coma+'[a-zA-Z\t]+[\.]?[\:]?[[a-zA-Z\t]+]?)?'
+apa_inicial= '[A-Z](.)[ ]?'
+apa_presidenteConferencia='(En )'+apa_inicial+apa_author+'[\(](Presidencia)[\)]'
+apa_tituloConferencia = '[a-zA-Z0-9\ °]+'
+apa_year= '([\(][0-9]+[\)]|[\(][a-zA-Z0-9\ ]+[\)]|[\(]([0-9]+(-)[0-9]+)[\)])[\.]?[ ]?'
+apa_title = '([a-zA-Z\ ]+[\.]|[[a-zA-Z\ ]+(:)[a-zA-Z\ ]+]+)([\(]([a-zA-Z\ ]+)[\)](. ))?'
+apa_cityCo= '([a-zA-Z\ ]+'+exp_coma+'[a-zA-Z\ ]+[\.]?[\:]?[[a-zA-Z\ ]+]?)?'
 apa_editorial= '[a-zA-Z\ ]+[\.]?'
 apa_nombreRevista= '[a-zA-Z\ ]+[\.]?'
 apa_page = '(pp. )?(([0-9]+)(-)([0-9]+)|[0-9]+)[.]'
-apa_volume = '([0-9]+)( )[\(][0-9]+[\)]'
+apa_volume = '[0-9]+( )[\(][0-9]+[\)]'
 apa_website='((http://)|(https://))(www.)[[a-z\.]+[\/]?]+'#((http:\/\/)|(https:\/\/))(www.)[[a-z\.]+[\/]?]+
-apa_country = ''
 apaLibro=apa_author+exp_coma+apa_inicial+exp_coma+apa_year+exp_coma+apa_title+exp_coma+apa_cityCo+apa_editorial
-apaPaginaWeb=apa_author+'(. )'+apa_year+'(. )'+apa_title+'(. )'+apa_cityCo+'( Recuperado de: )'+apa_website
-apaConferencia=apa_author+exp_coma+apa_inicial+apa_year+apa_title+exp_coma+apa_presidenteConferencia+apa_tituloConferencia+'((Simposio llevado a cabo en )|(Conferencia llevado a cabo en ))'+exp_coma+apa_cityCo
-apaArticulo= '['+apa_author+exp_coma+apa_inicial+exp_coma+']*'+'(y )?'+apa_author+exp_coma+apa_inicial+exp_coma+apa_year+apa_title+apa_nombreRevista+exp_coma+apa_volume+exp_coma+apa_page
+apaPaginaWeb=apa_author+'(. )'+apa_year+'(. )'+apa_title+'(. )'+apa_cityCo+apa_nombreRevista+'[( Recuperado de: )]+'+apa_website
+apaConferencia=apa_author+exp_coma+apa_inicial+apa_year+apa_title+apa_presidenteConferencia+exp_coma+apa_tituloConferencia+'(. )'+'((Simposio llevado a cabo en )|(Conferencia llevado a cabo en )|(Congreso llevado a cabo en))'+exp_coma+apa_cityCo
+apaArticulo= '['+apa_author+exp_coma+apa_inicial+exp_coma+']*'+'(y )?'+apa_author+exp_coma+apa_inicial+exp_coma+apa_year+apa_title+exp_coma+apa_nombreRevista+'(,)[ ]'+apa_volume+'(,)[ ]'+apa_page
 apaInforme=apa_author+exp_coma+'['+apa_inicial+'( )'+']*'+'(. )'+apa_year+'(. )'+apa_title+'(. )'+apa_cityCo+'(. )?'+'( Recuperado de: )'+apa_website
+#apaLibro = ''
+#apaPaginaWeb = '[a-zA-Z\ ]+(. )([\(][0-9]+[\)]|[\(][a-zA-Z0-9\ ]+[\)]|[\(]([0-9]+(-)[0-9]+)[\)])[\.]?[ ]?([a-zA-Z\ ]+[\.]|[[a-zA-Z\ ]+(:)[a-zA-Z\ ]+]+)([\(]([a-zA-Z\ ]+)[\)](. ))?(. )([a-zA-Z\ ]+[(,)[ ]+]?[a-zA-Z\ ]+[\.]?[\:]?[[a-zA-Z\ ]+]?)?[a-zA-Z\ ]+[\.]?[( Recuperado de: )]+((http:\/\/)|(https:\/\/))(www.)[[a-z\.]+[\/]?]+'
+#apaConferencia = '[a-zA-Z\ ]+(,)[ ]+[A-Z](.)[ ]?([\(][0-9]+[\)]|[\(][a-zA-Z0-9\ ]+[\)]|[\(]([0-9]+(-)[0-9]+)[\)])[\.]?[ ]?([a-zA-Z\ ]+[\.]?|[a-zA-Z\t]+(:)[a-zA-Z\t]+)[(,)[ ]+]?[\(]([a-zA-Z\ ]+)[\)](. )(En )[A-Z](.)[ ]?[a-zA-Z\ ]+[\(](Presidencia)[\)][(,)[ ]+]?[a-zA-Z0-9\ °]+(. )((Simposio llevado a cabo en )|(Conferencia llevado a cabo en )|(Congreso llevado a cabo en))([a-zA-Z\ ]+[(,)[ ]+]?[a-zA-Z\ ]+[\.]?[\:]?[[a-zA-Z\t]+]?)?'
+#apaArticulo = '[[a-zA-Z\ ]+[(,)[ ]+]?[[A-Z](.)][(,)[ ]+]?]*(y )?[[a-zA-Z\ ]+[(,)[ ]+]?[A-Z](.)][(,)[ ]?]([\(][0-9]+[\)]|[\(][a-zA-Z0-9\ ]+[\)]|[\(]([0-9]+(-)[0-9]+)[\)])[\.]?([a-zA-Z\ ]+[\.]?|[a-zA-Z\t]+(:)[a-zA-Z\t]+)([a-zA-Z\ ]+[(,)[ ]+]?[a-zA-Z\t]+[\.]?[\:]?[[a-zA-Z\t]+]?)?[(,)[ ]+]?[a-zA-Z\ ]+[\.]?(,)[ ]+[0-9]+[\(][0-9]+[\)](,)[ ]+(pp. )?(([0-9]+)(-)([0-9]+)|[0-9]+)[.]'
 #apaInforme = '[a-zA-Z\ ]+[(,)[\ ]+]?[[A-Z](.)( )]*(. )([\(][0-9]+[\)]|[\(][a-zA-Z0-9\ ]+[\)]|[\(]([0-9]+(-)[0-9]+)[\)])[\.]?(. )([a-zA-Z\ ]+[\.]?|[a-zA-Z\t]+(:)[a-zA-Z\t]+)(. )([a-zA-Z\ ][(,)[\ ]+]?[a-zA-Z\t]+[\.]?[\:]?[[a-zA-Z\t]+]?)?(. )?( Recuperado de: )((http:\/\/)|(https:\/\/))(www.)[[a-z\.]+[\/]?]+'
 #Ejemplo conferencia
-#Rojas, C., & Vera, N. (Agosto de 2013). ABMS (Automatic BLAST for Massive Sequencing). En H. Castillo (Presidencia), 2° Congreso Colombiano de Biologia Computacional y Bioinformatica CCBCOL. Congreso llevado a cabo en Manizales, Colombia.
+#Rojas, C.(Agosto de 2013). ABMS (Automatic BLAST for Massive Sequencing). En H. Castillo (Presidencia), 2° Congreso Colombiano de Biologia Computacional y Bioinformatica CCBCOL. Congreso llevado a cabo en Manizales, Colombia.
 #Ejemplo libro
 #Hacyan, S., (2004), Fisica y metafisica en el espacio y el tiempo. La filosofia en el laboratorio, Mexico DF, Mexico: Fondo nacional de cultura economica.
 #Ejemplo articulo
@@ -50,8 +53,8 @@ apaInforme=apa_author+exp_coma+'['+apa_inicial+'( )'+']*'+'(. )'+apa_year+'(. )'
 #Argosy Medical Animation. (2007-2009). Visible body: Discover human anatomy. New York, EU.: Argosy Publishing. Recuperado de http://www.visiblebody.com
 #Ejemplo informe
 #Departamento Administrativo Nacional de Estadisticas. (2012). Tecnologias de la informacion y las comunicaciones. Recuperado de: http://www.dane.gov.co
-cadena = 'Coruminas, M., Ronecro, C., Bruguca, E., y Casas, M. (2007). Sistema dopaminergico y adicciones, Rev Mukuel, 44(1), 23-31.'
-h = re.match(apaArticulo,cadena)
+cadena = 'Hacyan, S., (2004), Fisica y metafisica en el espacio y el tiempo. La filosofia en el laboratorio, Mexico DF, Mexico: Fondo nacional de cultura economica.'
+h = re.search(apaLibro,cadena)
 if h!= None:
     print("Funciona")
 else:
