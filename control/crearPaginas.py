@@ -9,7 +9,6 @@ from reportlab.platypus.paragraph import TA_RIGHT, TA_CENTER, TA_JUSTIFY, TA_LEF
 from reportlab.lib.styles import _baseFontNameB, _baseFontNameBI, _baseFontNameI
 from reportlab.lib.styles import ParagraphStyle,getSampleStyleSheet
 
-
 class MyDocTemplate(BaseDocTemplate):
  def __init__(self, filename, **kw):
     self.allowSplitting = 0
@@ -25,7 +24,7 @@ class MyDocTemplate(BaseDocTemplate):
             self.notify('TOCEntry', (0, text, self.page))
         if style == 'Heading2':
             self.notify('TOCEntry', (1, text, self.page))
-
+#Fuente: https://www.reportlab.com/docs/reportlab-userguide.pdf pag 28 para cursiva, pagina 72 para centralizar
 
 h1 = PS(name = 'Heading1',
  fontSize = 14,
@@ -43,6 +42,7 @@ h6 = PS(name = 'negritaCursiva', fontSize = 14,alignment =  TA_CENTER,fontName=_
 h7 = PS(name= 'cuerpo', fontSize = 12, alignment = TA_JUSTIFY, fontName=_baseFontNameB)
 h8 = PS(name= 'cuerpo2', fontSize = 12, alignment = TA_JUSTIFY)
 h9 = PS(name= 'cuerpo3', fontSize = 12, alignment = TA_JUSTIFY, fontName=_baseFontNameB, )
+
 #con alignment puedes elegir su posicionamiento, son constantes y son: centrado( TA_CENTER), justificado(TA_JUSTIFY), por la derecha(TA_RIGHT) Y por
 #la izquierda(TA_LEFT)
 #En fontName puedes elegir entre negrita y cursiva(_baseFontNameBI), negrita(_baseFontNameB) o cursiva (_baseFontNameI)
