@@ -5,6 +5,11 @@ from reportlab.platypus.doctemplate import PageTemplate, BaseDocTemplate
 from reportlab.platypus.tableofcontents import TableOfContents
 from reportlab.platypus.frames import Frame
 from reportlab.lib.units import cm
+from reportlab.platypus.paragraph import TA_RIGHT, TA_CENTER, TA_JUSTIFY, TA_LEFT, _FK_BREAK
+from reportlab.lib.styles import _baseFontNameB, _baseFontNameBI, _baseFontNameI
+from reportlab.lib.styles import ParagraphStyle,getSampleStyleSheet
+
+
 class MyDocTemplate(BaseDocTemplate):
  def __init__(self, filename, **kw):
     self.allowSplitting = 0
@@ -24,14 +29,23 @@ class MyDocTemplate(BaseDocTemplate):
 
 h1 = PS(name = 'Heading1',
  fontSize = 14,
- leading = 16)
+ leading = 16,
+fontName=_baseFontNameBI
+    )
 h2 = PS(name = 'Heading2',
     fontSize = 12,
     leading = 14)
 
-h3 = PS(name = 'titulo',fontSize = 20,leading = 22)
+h3 = PS(name = 'titulo',fontSize = 20,leading = 22,alignment =  TA_CENTER,fontName=_baseFontNameBI)
 h4 = PS(name = 'sub1', fontSize = 10,leading = 12)
-h5 = PS(name = 'primeraPagina', fontSize = 16, leading = 18)
+h5 = PS(name = 'primeraPagina', fontSize = 16, leading = 18,alignment =  TA_CENTER)
+h6 = PS(name = 'negritaCursiva', fontSize = 14,alignment =  TA_CENTER,fontName=_baseFontNameBI)
+h7 = PS(name= 'cuerpo', fontSize = 12, alignment = TA_JUSTIFY, fontName=_baseFontNameB)
+h8 = PS(name= 'cuerpo2', fontSize = 12, alignment = TA_JUSTIFY)
+h9 = PS(name= 'cuerpo3', fontSize = 12, alignment = TA_JUSTIFY, fontName=_baseFontNameB, )
+#con alignment puedes elegir su posicionamiento, son constantes y son: centrado( TA_CENTER), justificado(TA_JUSTIFY), por la derecha(TA_RIGHT) Y por
+#la izquierda(TA_LEFT)
+#En fontName puedes elegir entre negrita y cursiva(_baseFontNameBI), negrita(_baseFontNameB) o cursiva (_baseFontNameI)
 # Build story.
 story = []
 toc = TableOfContents()
@@ -86,33 +100,45 @@ story.append(PageBreak())
 story.append(Paragraph('Second sub heading', h2))
 story.append(Paragraph('Text in second sub heading', PS('body')))
 story.append(Paragraph('Last heading', h1))
+story.append(PageBreak())
+story.append(Paragraph('Mi intento',h6))
 doc = MyDocTemplate('mintoc.pdf')
 doc.multiBuild(story)
 
-def paperIee(nombreDocumento,resumenpdf,TotalAuto,lugar,mail,intro,cuerpopdf,recomendaciones,conclusiones,referencias,titulo):
+def paperIee(nombreDocumento,resumenpdf,autores,autoresC,lugar,mail,intro,cuerpopdf,recomendaciones,conclusiones,referencias,titulo):
     mipaper = []
-    mipaper.append(Paragraph(titulo,h3))
-    mipaper.append(Paragraph("\n",h3))
-    mipaper.append(Paragraph(TotalAuto,h4))
-    mipaper.append(Paragraph("\n", h4))
-    mipaper.append(Paragraph(mail, h4))
-    mipaper.append(Paragraph("\n", h4))
-    mipaper.append(Paragraph(lugar, h4))
-    mipaper.append(Paragraph("\n", PS('body')))
+    mipaper.append(Paragraph(titulo, h3))
+    mipaper.append(Paragraph(autores, h5))
+    mipaper.append(Paragraph(autoresC, h5))
+    mipaper.append(Paragraph(lugar, h5))
+    mipaper.append(Paragraph(mail, h5))
+
     mipaper.append(Paragraph("Abstract",h1))
-    mipaper.append(Paragraph(resumenpdf, PS('body')))
+    for i in range(len(resumenpdf)):
+        mipaper.append(Paragraph(resumenpdf[i],h7))
+
+
+    mipaper.append(Paragraph("1.- Introduccion",h1))
+    for i in range(len(intro)):
+        mipaper.append(Paragraph(intro[i], h8))
     mipaper.append(PageBreak())
-    mipaper.append(Paragraph("Introduccion",h1))
-    mipaper.append(Paragraph(intro, PS('body')))
-    mipaper.append(PageBreak())
-    mipaper.append(Paragraph("Estado del arte", h1))
-    mipaper.append(Paragraph(cuerpopdf, PS('body')))
-    mipaper.append(Paragraph("Recomendaciones", h1))
-    mipaper.append(Paragraph(recomendaciones, PS('body')))
-    mipaper.append(Paragraph("Conclusiones", h1))
-    mipaper.append(Paragraph(conclusiones, PS('body')))
-    mipaper.append(Paragraph("Referencias", h1))
-    mipaper.append(Paragraph(referencias, PS('body')))
+
+    mipaper.append(Paragraph("2.- Estado del arte", h1))
+    for i in range(len(cuerpopdf)):
+        mipaper.append(Paragraph(cuerpopdf[i], h8))
+
+    mipaper.append(Paragraph("3.- Recomendaciones", h1))
+    for i in range(len(recomendaciones)):
+        mipaper.append(Paragraph(recomendaciones[i], h8))
+
+    mipaper.append(Paragraph("4.- Conclusiones", h1))
+    for i in range(len(conclusiones)):
+        mipaper.append(Paragraph(conclusiones[i], h8))
+
+    mipaper.append(Paragraph("5.- Referencias", h1))
+    for i in range(len(referencias)):
+        mipaper.append(Paragraph("["+str(i+1)+"] "+referencias[i],h8))
+
     doc = MyDocTemplate(nombreDocumento)
     doc.multiBuild(mipaper)
 
@@ -130,33 +156,27 @@ def paperApa(nombreDocumento,titulo,autores,autoresC,lugar,mail,resumenpdf,intro
     miPaperApa.append(Paragraph("Abstract(Resumen).", h1))
     miPaperApa.append(Paragraph("    ",PS('body')))
     for i in range(len(resumenpdf)):
-        miPaperApa.append(Paragraph(resumenpdf[i],PS('body')))
+        miPaperApa.append(Paragraph(resumenpdf[i],h7))
     miPaperApa.append(PageBreak())
     miPaperApa.append(Paragraph("Introduccion", h1))
     for i in range(len(intro)):
-        miPaperApa.append(Paragraph(intro[i], PS('body')))
+        miPaperApa.append(Paragraph(intro[i], h8))
     miPaperApa.append(PageBreak())
     miPaperApa.append(Paragraph("Estado del arte", h1))
     for i in range(len(cuerpopdf)):
-        miPaperApa.append(Paragraph(cuerpopdf[i], PS('body')))
+        miPaperApa.append(Paragraph(cuerpopdf[i], h8))
 
     miPaperApa.append(Paragraph("Recomendaciones", h1))
     for i in range(len(recomendaciones)):
-        miPaperApa.append(Paragraph(recomendaciones[i], PS('body')))
+        miPaperApa.append(Paragraph(recomendaciones[i], h8))
 
     miPaperApa.append(Paragraph("Conclusiones", h1))
     for i in range(len(conclusiones)):
-        miPaperApa.append(Paragraph(conclusiones[i], PS('body')))
+        miPaperApa.append(Paragraph(conclusiones[i], h8))
+    miPaperApa.append(PageBreak())
     miPaperApa.append(Paragraph("Referencias", h1))
     for i in range(len(referencias)):
-        miPaperApa.append(Paragraph("["+str(i+1)+"] "+referencias[i],PS('body')))
+        miPaperApa.append(Paragraph("["+str(i+1)+"] "+referencias[i],h8))
     doc = MyDocTemplate(nombreDocumento)
     doc.multiBuild(miPaperApa)
-
-
-
-
-
-
-
 

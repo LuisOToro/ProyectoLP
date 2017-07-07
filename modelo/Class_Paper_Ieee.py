@@ -36,20 +36,27 @@ class Paper_Ieee(Class_Paper.Paper):
 
 
     def crearPdf(self,nombrepdf,titulo):
-        resumenpdf = "Resumen --"+self.resumen + "\nPalabras claves: " + Class_Paper.unirArrayKeys(self.palabrasClaves)\
-                     + "\nAbstract --" + Class_Paper.unirArraySalto(self.abstract) + "\nKeyworks: " + Class_Paper.unirArrayKeys(self.keyWorks)
+        resumenpdf = []
+        resumenpdf.append("Resumen -- " + self.resumen + ".")
+        resumenpdf.append("Palabras claves: " + Class_Paper.unirArrayKeys(self.palabrasClaves) + ".")
+        resumenpdf.append("Abstract --" + Class_Paper.unirArraySalto(self.abstract) + ".")
+        resumenpdf.append("Keyworks: " + Class_Paper.unirArrayKeys(self.keyWorks) + ".")
+
         autores = Class_Paper.unirArrayKeys(self.autores)
         autoresC = Class_Paper.unirArraySalto(self.aoutCorpo)
-        TotalAuto = autores + "\n"+autoresC
-        lugar = self.ciudad +" "+self.pais
-        mail = lugar+"\n"+self.correo
-        intro = "1.     Introducción\n" + Class_Paper.unirArraySalto(self.introduccion)
-        cuerpopdf = "2.     Cuerpo\n" + Class_Paper.unirArraySalto(self.cuerpo)
-        recomendaciones = "3.       Recomendaciones\n" + Class_Paper.unirArraySalto(self.recomendaciones)
-        conclusiones = "4.      Conclusiones\n" + Class_Paper.unirArraySalto(self.conclusiones)
-        referencias = "5.       Referencias\n" + Class_Paper.unirArraySalto(self.referencias)
+        TotalAuto = autores + "\n" + autoresC
+        lugar = self.ciudad + ", " + self.pais
+        mail = self.correo
+
+        intro = self.introduccion
+        cuerpopdf = self.cuerpo
+        recomendaciones = self.recomendaciones
+        conclusiones = self.conclusiones
+        referencias = self.referencias
+
         name_EXt = nombrepdf+".pdf"
-        crearPaginas.paperIee(name_EXt,resumenpdf,TotalAuto,lugar,mail,intro,cuerpopdf,recomendaciones,conclusiones,referencias,titulo)
+
+        crearPaginas.paperIee(name_EXt,resumenpdf,autores,autoresC,lugar,mail,intro,cuerpopdf,recomendaciones,conclusiones,referencias,titulo)
 
 
 
