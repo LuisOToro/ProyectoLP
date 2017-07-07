@@ -128,21 +128,32 @@ def paperApa(nombreDocumento,titulo,autores,autoresC,lugar,mail,resumenpdf,intro
     miPaperApa.append(toc)
     miPaperApa.append(PageBreak())
     miPaperApa.append(Paragraph("Abstract(Resumen).", h1))
-    miPaperApa.append(Paragraph(resumenpdf, PS('body')))
+    miPaperApa.append(Paragraph("    ",PS('body')))
+    for i in range(len(resumenpdf)):
+        miPaperApa.append(Paragraph(resumenpdf[i],PS('body')))
     miPaperApa.append(PageBreak())
     miPaperApa.append(Paragraph("Introduccion", h1))
-    miPaperApa.append(Paragraph(intro, PS('body')))
+    for i in range(len(intro)):
+        miPaperApa.append(Paragraph(intro[i], PS('body')))
     miPaperApa.append(PageBreak())
     miPaperApa.append(Paragraph("Estado del arte", h1))
-    miPaperApa.append(Paragraph(cuerpopdf, PS('body')))
+    for i in range(len(cuerpopdf)):
+        miPaperApa.append(Paragraph(cuerpopdf[i], PS('body')))
+
     miPaperApa.append(Paragraph("Recomendaciones", h1))
-    miPaperApa.append(Paragraph(recomendaciones, PS('body')))
+    for i in range(len(recomendaciones)):
+        miPaperApa.append(Paragraph(recomendaciones[i], PS('body')))
+
     miPaperApa.append(Paragraph("Conclusiones", h1))
-    miPaperApa.append(Paragraph(conclusiones, PS('body')))
+    for i in range(len(conclusiones)):
+        miPaperApa.append(Paragraph(conclusiones[i], PS('body')))
     miPaperApa.append(Paragraph("Referencias", h1))
-    miPaperApa.append(Paragraph(referencias, PS('body')))
+    for i in range(len(referencias)):
+        miPaperApa.append(Paragraph("["+str(i+1)+"] "+referencias[i],PS('body')))
     doc = MyDocTemplate(nombreDocumento)
     doc.multiBuild(miPaperApa)
+
+
 
 
 

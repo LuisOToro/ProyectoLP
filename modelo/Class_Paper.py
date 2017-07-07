@@ -1,21 +1,33 @@
 import re
 def unirArray(lista):
     salida2 = ""
-    for i in range(len(lista)):
-        salida2 = salida2 + lista[i]
-    return salida2
+    if len(lista)>1:
+        for i in range(len(lista)):
+            salida2 = salida2 + lista[i]
+        return salida2
+    else:
+        return lista[0]
+
 
 def unirArraySalto(lista):
     salida3 = ""
-    for i in range(len(lista)):
-        salida3 = salida3 + "\n" +lista[i]
-    return salida3
+    if len(lista)>1:
+        for i in range(len(lista)):
+            salida3 = salida3 + "\n" + lista[i]
+        return salida3
+    else:
+        return lista[0]
+
 
 def unirArrayKeys(lista):
     salida4 = ""
-    for i in range(len(lista)):
-        salida4 = salida4 + ", " +lista[i]
-    return salida4
+    if len(lista)>1:
+        for i in range(len(lista)):
+            salida4 = salida4 + ", " + lista[i]
+        return salida4
+    else:
+        return lista[0]
+
 
 class Paper:
 

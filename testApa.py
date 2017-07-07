@@ -52,7 +52,7 @@ paperApa.paper.addConclusiones("conclusion 3")
 paperApa.paper.addMail("jiquinta@espol.edu.ec")
 
 
-paperApa.paper.crearPdf("Este es mi paper de prueba","Este es el titulo de mi paper")
+paperApa.paper.crearPdf("Paper_Apa","Este es el titulo de mi paper")
 
 
 

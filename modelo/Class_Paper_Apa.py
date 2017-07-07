@@ -13,11 +13,11 @@ class Paper_Apa(Class_Paper.Paper):
         self.refencias = []
 
     def addReferenciaArticle(self, Bibtex_articulo):
-        salida = Bibtex_articulo.autor+ ".("+meses[Bibtex_articulo.mes]+", "+str(Bibtex_articulo.anio)+"). "+Bibtex_articulo.titulo+". "+Bibtex_articulo.journal+", "+str(Bibtex_articulo.volumen)+", "+Bibtex_articulo.pagina
+        salida = Bibtex_articulo.autor+ ".("+meses[Bibtex_articulo.mes]+", "+str(Bibtex_articulo.anio)+"). "+Bibtex_articulo.titulo+". "+Bibtex_articulo.journal+", "+str(Bibtex_articulo.volumen)+", "+Bibtex_articulo.pagina+"."
         self.refencias.append(salida)
 
     def addReferenciaBook(self,Bibtex_Book,paginas,editorial):
-        salida = Bibtex_Book.autor + ". ("+meses[Bibtex_Book.mes]+", "+str(Bibtex_Book.anio)+"). "+Bibtex_Book.publisher+". En "+ Bibtex_Book.titulo+"(pp. "+paginas+"). "+Bibtex_Book.direccion+": "+editorial
+        salida = Bibtex_Book.autor + ". ("+meses[Bibtex_Book.mes]+", "+str(Bibtex_Book.anio)+"). "+Bibtex_Book.publisher+". En "+ Bibtex_Book.titulo+"(pp. "+paginas+"). "+Bibtex_Book.direccion+": "+editorial+"."
         self.refencias.append(salida)
 
     def addReferenciaManual(self,Bibtex_Manual):
@@ -25,17 +25,19 @@ class Paper_Apa(Class_Paper.Paper):
         self.refencias.append(salida)
 
     def addReferenciaPubliacion(self,Bibtex_Publicacion):
-        salida= Bibtex_Publicacion.autor + ". ("+meses[Bibtex_Publicacion.mes]+", "+str(Bibtex_Publicacion.anio)+"). "+Bibtex_Publicacion.titulo+". "+Bibtex_Publicacion.nombre
+        salida= Bibtex_Publicacion.autor + ". ("+meses[Bibtex_Publicacion.mes]+", "+str(Bibtex_Publicacion.anio)+"). "+Bibtex_Publicacion.titulo+". "+Bibtex_Publicacion.nombre+"."
         self.refencias.append(salida)
 
     def addReferenciaConference(self, Bibtex_conference,pais):
-        salida = Bibtex_conference.autor+". ("+meses[Bibtex_conference.mes]+", "+str(Bibtex_conference.anio)+"). "+Bibtex_conference.titulo+". "+Bibtex_conference.organizacion+". "+Bibtex_conference.nameConference+". Congreso llevado a cabo en "+Bibtex_conference.organizacion+", "+pais
+        salida = Bibtex_conference.autor+". ("+meses[Bibtex_conference.mes]+", "+str(Bibtex_conference.anio)+"). "+Bibtex_conference.titulo+". "+Bibtex_conference.organizacion+". "+Bibtex_conference.nameConference+". Congreso llevado a cabo en "+Bibtex_conference.organizacion+", "+pais+"."
         self.refencias.append(salida)
 
     def crearPdf(self,nombrePaper,titulo):
-        resumenpdf = "Resumen --" + self.resumen + "\nPalabras claves: " + Class_Paper.unirArrayKeys(self.palabrasClaves) \
-                     + "\nAbstract --" + Class_Paper.unirArraySalto(
-            self.abstract) + "\nKeyworks: " + Class_Paper.unirArrayKeys(self.keyWorks)
+        resumenpdf = []
+        resumenpdf.append("Resumen -- " + self.resumen+".")
+        resumenpdf.append("Palabras claves: " + Class_Paper.unirArrayKeys(self.palabrasClaves)+".")
+        resumenpdf.append("Abstract --" + Class_Paper.unirArraySalto(self.abstract)+".")
+        resumenpdf.append("Keyworks: " + Class_Paper.unirArrayKeys(self.keyWorks)+".")
 
         autores = Class_Paper.unirArrayKeys(self.autores)
         autoresC = Class_Paper.unirArraySalto(self.aoutCorpo)
@@ -43,13 +45,11 @@ class Paper_Apa(Class_Paper.Paper):
         lugar = self.ciudad + ", " + self.pais
         mail = self.correo
 
-        primeraPagina = "\n" + TotalAuto + "\n" + mail
-
-        intro = "1.     Introducción\n" + Class_Paper.unirArraySalto(self.introduccion)
-        cuerpopdf = "2.     Cuerpo\n" + Class_Paper.unirArraySalto(self.cuerpo)
-        recomendaciones = "3.       Recomendaciones\n" + Class_Paper.unirArraySalto(self.recomendaciones)
-        conclusiones = "4.      Conclusiones\n" + Class_Paper.unirArraySalto(self.conclusiones)
-        referencias = "5.       Referencias\n" + Class_Paper.unirArraySalto(self.refencias)
+        intro = self.introduccion
+        cuerpopdf = self.cuerpo
+        recomendaciones = self.recomendaciones
+        conclusiones = self.conclusiones
+        referencias = self.refencias
 
         name_EXt = nombrePaper + ".pdf"
 
