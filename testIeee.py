@@ -12,12 +12,14 @@ texto3 = "@book{mi book,  author    = {Peter Babington},   title     = {The titl
 texto4 = "@manual{mi manual,  title        = {The title of the work},  author       = {Peter Gainsford},   organization = {The organization},  address      = {The address of the publisher},  edition      = 3,  month        = 7,  year         = 1993,  note         = {An optional note}}"
 
 texto5 = "@unpublished{mi unpublished,  author       = {Peter Marcheford},   title        = {The title of the work},  note         = {An optional note},  month        = 7,  year         = 1993}"
-
+r1 = "Argosy Medical Animation. (2007-2009). Visible body: Discover human anatomy. New York, EU.: Argosy Publishing. Recuperado de http://www.visiblebody.com"
 paperApa.iniciarBibtex_compiler_add_referencias(5,texto5)
 paperApa.iniciarBibtex_compiler_add_referencias(4,texto4)
 paperApa.iniciarBibtex_compiler_add_referencias(3,texto2)
 paperApa.iniciarBibtex_compiler_add_referencias(2,texto3)
 paperApa.iniciarBibtex_compiler_add_referencias(1,texto)
+
+paperApa.iniciarRegulares_add_referencias_Ieee(1,r1)
 
 paperApa.paper.addIntro("Actualmente estamos viviendo una gran revolución de la información sin darnos cuenta y sin conocer totalmente la tecnología que nos rodea. Nuevos cambios hacen que tengamos que actualizarnos constantemente en conocimientos relacionados con las nuevas tecnologías")
 paperApa.paper.addPalabraClaves("tecnologia")

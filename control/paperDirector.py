@@ -1,6 +1,6 @@
 from modelo import Class_Paper_Apa,Class_Paper_Ieee,Class_Bibtex_conference,Class_Bibtex_Book,Class_Bibtex_Article,Class_Bibtex_manual,Class_Bibtex_publicacion,Class_Tokens,Class_Paper
 from control import help
-from control import referenciasApa
+from control import referenciasApa,referenciasIeee
 
 reservadas = {"articulo": "ARTICULO", "autor": "AUTOR", "titulo": "TITLE", "anio": "YEAR", "paginas": "PAGE",
                       "notas": "NOTE", "volumen": "VOLUMEN", "journal": "JOURNAL", "numero": "NUMERO",
@@ -160,6 +160,48 @@ class paperDirector:
             if tmp != "":
                 if self.tipoPaper == 1:
                     self.paper.refencias.append(texto)
+                else:
+                    print("Tipo de paper invalido")
+        else:
+            print("Tipo de referencia invalida")
+
+    def iniciarRegulares_add_referencias_Ieee(self,tipo,texto):
+        if tipo == 1:
+            tmp = referenciasIeee.addReferencia_Web_Regular(texto)
+            if tmp != "":
+                if self.tipoPaper == 2:
+                    self.paper.referencias.append(texto)
+                else:
+                    print("Tipo de paper invalido")
+
+        elif tipo == 2:
+            tmp = referenciasIeee.addReferencia_Libro_Regular(texto)
+            if tmp != "":
+                if self.tipoPaper == 2:
+                    self.paper.referencias.append(texto)
+                else:
+                    print("Tipo de paper invalido")
+        elif tipo == 3:
+            tmp = referenciasIeee.addReferencia_Conferencia_Regular(texto)
+            if tmp != "":
+                if self.tipoPaper == 2:
+                    self.paper.referencias.append(texto)
+                else:
+                    print("Tipo de paper invalido")
+
+        elif tipo == 4:
+            tmp = referenciasIeee.addReferencia_Informe_Regular(texto)
+            if tmp != "":
+                if self.tipoPaper == 2:
+                    self.paper.referencias.append(texto)
+                else:
+                    print("Tipo de paper invalido")
+
+        elif tipo == 5:
+            tmp = referenciasIeee.addReferencia_NoPublicado_Regular(texto)
+            if tmp != "":
+                if self.tipoPaper == 2:
+                    self.paper.referencias.append(texto)
                 else:
                     print("Tipo de paper invalido")
         else:
