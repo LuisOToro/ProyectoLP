@@ -66,8 +66,12 @@ apaInforme=apa_author+exp_coma+'['+apa_inicial+'( )'+']*'+'(. )'+apa_year+'(. )'
 #Departamento Administrativo Nacional de Estadisticas. (2012). Tecnologias de la informacion y las comunicaciones. Recuperado de: http://www.dane.gov.co
 cadena = 'D. B. Payne and J. R. Stern, "Wavelength-switched pas- sively coupled single-mode optical network," in Proc. IOOC-ECOC, Boston, MA, USA, 1985, pp. 585–590.'
 cadena2 = 'B. Smith, "An approach to graphs of linear forms," unpublished.'
+cadena3= ''
+daena4= ''
 h = re.match(noPublicado,cadena2)
 h1 = re.match(conferencia,cadena)
+h2= re.match(articulo)
+h3=re.match()
 if h1!= None:
     print("Funciona")
 else:

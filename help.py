@@ -11,3 +11,11 @@ def helpApa():
           "Ejemplo informe"
           "Departamento Administrativo Nacional de Estadisticas. (2012). Tecnologias de la informacion y las comunicaciones. Recuperado de: http://www.dane.gov.co"
           )
+def helpIEEE():
+      print("Para utilizar las referencias disponibles se debe seguir el formato mostrado por los siguientes ejemplos:"
+            "Ejemplo noPublicado"
+            '''B. Smith, "An approach to graphs of linear forms," unpublished.
+            
+            
+            '''
+            )
