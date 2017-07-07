@@ -1,9 +1,9 @@
 import re
 #Book IEEE
 exp_pages = '(pp. )(([0-9]+)(-)([0-9]+)|[0-9]+)[.]'
-exp_author = '^(([A-Z](. )){,2}[a-zA-Z]+|[a-zA-Z ]+)'
+exp_author = '([A-Z][.][ ]+[a-zA-Z]+)'
 exp_coma = '[(,)[ ]+]?'
-exp_title = '((")[a-zA-Z ]+(,")( in )?[a-zA-Z ]+|[a-zA-Z ]+|(")[\w]+("))'
+exp_title = '(((")[a-zA-Z ]+(,")( in )([a-zA-Z ]+))?|([a-zA-Z ]+)|((")[a-zA-Z]+(")))'
 exp_year = '[0-9]+'
 exp_chapter = '(ch. )[0-9]+'
 exp_section = '(sec. )[0-9]+'
@@ -19,7 +19,10 @@ libro = exp_author+exp_coma+exp_title+exp_coma+exp_city+exp_coma+exp_state+exp_c
 articulo = exp_author+exp_coma+exp_title+exp_coma+exp_volume+exp_coma+exp_number+exp_coma+exp_month+exp_year+exp_coma+exp_articleNumber
 manual = exp_author+exp_coma+exp_title+exp_coma+exp_city+exp_coma+exp_state+exp_coma+exp_country+exp_coma+exp_year
 conferencia = exp_author+exp_coma+exp_title+exp_coma+exp_city+exp_coma+exp_state+exp_coma+exp_country+exp_coma+exp_year
-publicacion = exp_author+exp_coma+exp_title+exp_coma+exp_pages
+noPublicado = exp_author+exp_coma+exp_title+'( unpublished.)?'
+#noPublicado = '([A-Z][.][ ]+[a-zA-Z]+)[(,)[ ]+]?(((")[a-zA-Z ]+(,")( in )([a-zA-Z ]+))?|([a-zA-Z ]+)|((")[a-zA-Z]+(")))( unpublished.)?'
+#Ejemplo noPublicado
+#B. Smith, "An approach to graphs of linear forms," unpublished.
 #APA
 apa_author= '[a-zA-Z\ ]+'
 apa_inicial= '[A-Z](.)[ ]?'
@@ -53,8 +56,8 @@ apaInforme=apa_author+exp_coma+'['+apa_inicial+'( )'+']*'+'(. )'+apa_year+'(. )'
 #Argosy Medical Animation. (2007-2009). Visible body: Discover human anatomy. New York, EU.: Argosy Publishing. Recuperado de http://www.visiblebody.com
 #Ejemplo informe
 #Departamento Administrativo Nacional de Estadisticas. (2012). Tecnologias de la informacion y las comunicaciones. Recuperado de: http://www.dane.gov.co
-cadena = 'Hacyan, S., (2004), Fisica y metafisica en el espacio y el tiempo. La filosofia en el laboratorio, Mexico DF, Mexico: Fondo nacional de cultura economica.'
-h = re.search(apaLibro,cadena)
+cadena = 'B. Smith, "An approach to graphs of linear forms," unpublished.'
+h = re.search(noPublicado,cadena)
 if h!= None:
     print("Funciona")
 else:
