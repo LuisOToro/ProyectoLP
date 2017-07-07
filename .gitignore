@@ -10,6 +10,5 @@ modelo/__pycache__/*
 modelo/parsetab.py
 modelo/parser.out
 mitest.py
-text.txt
 *.zip
 *.rar

@@ -1,4 +1,5 @@
 from modelo import Class_Paper_Apa,Class_Paper_Ieee,Class_Bibtex_conference,Class_Bibtex_Book,Class_Bibtex_Article,Class_Bibtex_manual,Class_Bibtex_publicacion,Class_Tokens,Class_Paper
+from control import help
 
 reservadas = {"articulo": "ARTICULO", "autor": "AUTOR", "titulo": "TITLE", "anio": "YEAR", "paginas": "PAGE",
                       "notas": "NOTE", "volumen": "VOLUMEN", "journal": "JOURNAL", "numero": "NUMERO",
@@ -120,6 +121,10 @@ class paperDirector:
         else:
             print("Referencia Bibtex invalida")
             print("No se agrego la referencia")
+
+
+    def help(self):
+        help.referencias_Bibtex_posibles()
 
 
 
